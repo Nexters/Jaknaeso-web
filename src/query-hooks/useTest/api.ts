@@ -1,11 +1,11 @@
 import { clientApi } from '@/libs/api/client';
 
-const getTest = async (params, api = clientApi) => {
+const getTest = async () => {
   try {
-    const { data } = await api.get(`/api/test`);
+    const { data } = await clientApi.get(`/api/test`);
     return data;
   } catch (error) {
-    throw new Error({ error, ...params });
+    throw new Error();
   }
 };
 

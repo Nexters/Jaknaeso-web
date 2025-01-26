@@ -30,12 +30,12 @@ export class BaseApi {
    * Update the options for the axios instance.
    * @param {AxiosRequestConfig} newOptions - The new options for the axios instance.
    */
-  updateOptions(newOptions: AxiosRequestConfig): void {
-    this._axiosInstance.defaults = {
-      ...this._axiosInstance.defaults,
-      ...newOptions,
-    };
-  }
+  // updateOptions(newOptions: AxiosRequestConfig): void {
+  //   this._axiosInstance.defaults = {
+  //     ...this._axiosInstance.defaults,
+  //     ...newOptions,
+  //   };
+  // }
 
   /**
    * Send a GET request.

@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import testApis from './api';
 import testKeys from './keys';
 
-const useGetTest = ({ params, options } = {}) =>
+const useGetTest = (options?: UseQueryOptions) =>
   useQuery({
     queryKey: testKeys.all(),
     queryFn: () => testApis.getTest(),
