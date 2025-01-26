@@ -1,14 +1,14 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse, type AxiosError } from 'axios';
 
 interface AxiosInstanceParams {
   baseUrl: string;
   options?: AxiosRequestConfig;
 }
 
-interface ResponseInterceptorOptions {
-  onFulfilled: (response: AxiosResponse) => AxiosResponse | Promise<AxiosResponse>;
-  onRejected: (error: AxiosError) => Promise<AxiosError>;
-}
+// interface ResponseInterceptorOptions {
+//   onFulfilled: (response: AxiosResponse) => AxiosResponse | Promise<AxiosResponse>;
+//   onRejected: (error: AxiosError) => Promise<AxiosError>;
+// }
 
 export class BaseApi {
   private _axiosInstance: AxiosInstance;

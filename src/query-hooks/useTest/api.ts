@@ -5,7 +5,7 @@ const getTest = async () => {
     const { data } = await clientApi.get(`/api/test`);
     return data;
   } catch (error) {
-    throw new Error();
+    console.error(error);
   }
 };
 
