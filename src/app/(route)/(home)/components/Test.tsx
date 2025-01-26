@@ -1,6 +1,6 @@
 'use client';
 
-import { useGetTest } from '@/app/query-hooks/useTest/index';
+import { useGetTest } from '@/query-hooks/useTest/index';
 
 export function Test() {
   const data = useGetTest();

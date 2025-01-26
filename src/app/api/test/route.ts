@@ -1,5 +1,5 @@
-import { NextResponse, NextRequest } from '../../../../node_modules/next/server';
-import { serverApi } from '../../libs/api/server';
+import { NextResponse, NextRequest } from 'next/server';
+import { serverApi } from '../../../libs/api/server';
 
 const MOCK_DATA = [
   { id: 1, user: '배서영' },
