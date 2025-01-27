@@ -1,12 +1,3 @@
-.button_red {
-  background-color: red;
-}
-
-.button_green {
-  background-color: green;
-  border: 1px solid black;
-}
-
 .storybook-button {
   display: inline-block;
   cursor: pointer;
@@ -16,13 +7,13 @@
   line-height: 1;
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   &--primary {
-    background-color: #555ab9;
-    color: white;
+    background-color: $purple-200;
+    color: $gray-100;
   }
   &--secondary {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+    box-shadow: $gray-800 0px 0px 0px 1px inset;
     background-color: transparent;
-    color: #333;
+    color: $gray-800;
   }
   &--small {
     padding: 10px 16px;
@@ -35,5 +26,6 @@
   &--large {
     padding: 12px 24px;
     font-size: 16px;
+    @include dash-line(2px, $gray-800);
   }
 }
