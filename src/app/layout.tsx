@@ -6,6 +6,7 @@ import { KakaoScript } from '@/components/kakaoScript';
 import ReactQueryProviders from '../providers/ReactQueryProvider';
 
 import './globals.scss';
+import { AppleScript } from '@/components/appleScript';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <KakaoScript />
+        <AppleScript />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ReactQueryProviders>{children}</ReactQueryProviders>
