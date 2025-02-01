@@ -1,10 +1,11 @@
-import { Button } from '@/components/Button';
 import PrefetchHydration from '@/providers/PrefetchHydration';
 import testApis from '@/query-hooks/useTest/api';
 
-import { Test } from './components/Test';
+import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { Chip } from '@/components/Chip';
+
+import { Test } from './components/Test';
 
 export default async function Home() {
   return (

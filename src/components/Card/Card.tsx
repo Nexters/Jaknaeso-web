@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { Accordion } from 'radix-ui';
 import { Card as CardComponent, Text } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
