@@ -1,8 +1,13 @@
+'use client';
+import { useState } from 'react';
+
 import { Button } from '@/components/button';
 import { Card } from '@/components/Card';
 import { Chip } from '@/components/Chip';
+import { Switch } from '@/components/Switch';
 
-export default async function Home() {
+export default function Home() {
+  const [checked, setChecked] = useState(false);
   return (
     <div>
       <Button label="button" size="large" />
@@ -19,6 +24,7 @@ export default async function Home() {
       <Chip size="md" color="brand">
         Text
       </Chip>
+      <Switch checked={checked} onCheckedChange={setChecked} />
     </div>
   );
 }
