@@ -5,3 +5,7 @@
   align-items: $align-items;
   gap: $gap;
 }
+@mixin putCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
