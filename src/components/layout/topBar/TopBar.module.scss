@@ -4,6 +4,7 @@
   padding-bottom: 16px;
   padding-top: 74px;
   @include displayFlex(row, flex-start, center, 16px);
+  list-style: none;
 }
 
 .header {

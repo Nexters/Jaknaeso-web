@@ -1,6 +1,7 @@
 .container {
   height: 68px;
   background-color: $white;
+  list-style: none;
   @include displayFlex(row, center, center, 108px);
 }
 

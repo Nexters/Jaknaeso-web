@@ -17,15 +17,19 @@ const TABS = [
 export default function Footer() {
   const pathname = usePathname();
   return (
-    <div className={styles.container}>
-      {TABS.map((tab) => {
-        const isActive = tab.focus === ROUTES.home ? pathname === tab.focus : pathname.startsWith(tab.focus);
-        return (
-          <Link key={tab.href} href={tab.href}>
-            <tab.icon width={28} height={28} color={isActive ? 'black' : '#a9aeba'} />
-          </Link>
-        );
-      })}
-    </div>
+    <nav>
+      <ul className={styles.container}>
+        {TABS.map((tab) => {
+          const isActive = tab.focus === ROUTES.home ? pathname === tab.focus : pathname.startsWith(tab.focus);
+          return (
+            <li key={tab.href}>
+              <Link href={tab.href}>
+                <tab.icon width={28} height={28} color={isActive ? 'black' : '#a9aeba'} />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
