@@ -1,8 +1,10 @@
 import type { PropsWithChildren } from 'react';
-import { Accordion } from 'radix-ui';
 import { Card as CardComponent, Text } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
+import { Accordion } from 'radix-ui';
+
 import styles from './Card.module.scss';
+
+import '@radix-ui/themes/styles.css';
 
 interface CardProps {
   title: string;

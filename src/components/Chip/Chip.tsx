@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import cn from 'classnames';
+
 import styles from './Chip.module.scss';
 
 interface ChipProps {
