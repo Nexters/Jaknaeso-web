@@ -1,7 +1,7 @@
 'use client';
-
 import { Button } from '@/components/button';
 import { redirectUri } from '@/libs';
+import { isIOS, isMacOs } from 'react-device-detect';
 
 export default function LoginPage() {
   const handleKakaoLogin = () => {
@@ -17,7 +17,7 @@ export default function LoginPage() {
   return (
     <>
       <Button label="kakao login" onClick={handleKakaoLogin} />
-      <Button label="apple Login" onClick={handleAppleLogin} />
+      {(isIOS || isMacOs) && <Button label="apple Login" onClick={handleAppleLogin} />}
     </>
   );
 }
