@@ -1,0 +1,25 @@
+.container {
+  background: var(--white);
+  border-radius: 1.25rem;
+  background: var(--black-white-white, #fff);
+  padding: 1rem;
+  border: none !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.chips {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
