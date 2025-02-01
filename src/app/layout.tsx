@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { KakaoScript } from '@/components/kakaoScript';
+
 import ReactQueryProviders from '../providers/ReactQueryProvider';
+
 import './globals.scss';
+import { AppleScript } from '@/components/appleScript';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,6 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <KakaoScript />
+        <AppleScript />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ReactQueryProviders>{children}</ReactQueryProviders>
       </body>
