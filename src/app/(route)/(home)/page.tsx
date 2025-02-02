@@ -1,37 +1,3 @@
-'use client';
-import { useState } from 'react';
-
-import { Button } from '@/components/Button';
-import { Card } from '@/components/Card';
-import { Chip } from '@/components/Chip';
-import { Switch } from '@/components/Switch';
-import { Textfield } from '@/components/Textfield';
-
-import styles from './page.module.scss';
-
-export default function Home() {
-  const [checked, setChecked] = useState(false);
-  return (
-    <div style={{ padding: '20px' }}>
-      <Card
-        title="Q. 커리어를 향상시킬 수 있는 일자리이지만 가까운 사람들과 멀어져야한다면, 이 일자리를 선택하실 건가요?"
-        chipContents="1월 8일 1회차"
-        useCollapse
-      >
-        <div className="body2">
-          가까운 사람들과 물리적으로 멀어지더라도 그 관계가 사라지진 않음. 내 노력에 따라 관계는 달라질 수 있지만 커리어
-          기회는 원할 때 오는게 아님
-        </div>
-      </Card>
-      <Chip size="md" color="brand">
-        Text
-      </Chip>
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <Button label="button" className={styles.button} />
-        <Button label="button" color="neutral" className={styles.button} />
-      </div>
-      <Switch checked={checked} onCheckedChange={setChecked} />
-      <Textfield placeholder="질문에 답변한 이유를 적어보세요." />
-    </div>
-  );
+export default async function Home() {
+  return <div>홈 페이지</div>;
 }

@@ -28,7 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ReactQueryProviders>{children}</ReactQueryProviders>
+        <ReactQueryProviders>
+          <div className="container">
+            <main className="layout">{children}</main>
+          </div>
+        </ReactQueryProviders>
       </body>
     </html>
   );
