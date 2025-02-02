@@ -1,59 +1,83 @@
-import type { PropsWithChildren } from 'react';
-import { Card as CardComponent, Text } from '@radix-ui/themes';
-import { Accordion } from 'radix-ui';
+import { Card as CardComponent } from '@radix-ui/themes';
+import { Accordion, Separator } from 'radix-ui';
+
+import { ArrowDown2Icon as ArrowDownIcon } from '@/assets/icons';
 
 import styles from './Card.module.scss';
 
 import '@radix-ui/themes/styles.css';
 
-interface CardProps {
-  title: string;
-  chipContents: string;
-  useCollapse?: boolean;
+interface CardContentsProps {
+  question: string;
+  answer: string;
+  retrospective?: string;
 }
 
-const BasicCard = ({ title, chipContents, children }: PropsWithChildren<CardProps>) => (
-  <div className={styles.container}>
-    <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <Text color="gray" size="2">
-          {chipContents}
-        </Text>
-        <h3 className="body1">{title}</h3>
-      </div>
+interface CardProps extends CardContentsProps {
+  date: string;
+  hiddenCollapse?: boolean;
+  isOpen?: boolean;
+}
+
+const CardContents = ({ question, answer, retrospective }: CardContentsProps) => (
+  <div className={styles.cardContents}>
+    <div className={styles.question}>
+      <h3>Q.</h3>
+      <h3>{question}</h3>
     </div>
-    {children}
+    <Separator.Root className={styles.separator} />
+    <div className={styles.answer}>
+      <h3>A.</h3>
+      <h3>{answer}</h3>
+    </div>
+    {retrospective && (
+      <div className={styles.retrospective}>
+        <h3 className={styles.retrospective__title}>회고</h3>
+        <p className={styles.retrospective__content}>{retrospective}</p>
+      </div>
+    )}
   </div>
 );
 
-export default function Card({ title, chipContents, useCollapse = false, children }: PropsWithChildren<CardProps>) {
-  if (!useCollapse) {
-    return (
-      <BasicCard title={title} chipContents={chipContents}>
-        {children}
-      </BasicCard>
-    );
+const BasicCard = ({ date, question, answer, retrospective }: CardProps) => (
+  <div className={styles.container}>
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <h3 className="subtitle3">{date}</h3>
+      </div>
+      <CardContents question={question} answer={answer} retrospective={retrospective} />
+    </div>
+  </div>
+);
+
+export default function Card({
+  date,
+  question,
+  answer,
+  hiddenCollapse = false,
+  isOpen = false,
+  retrospective,
+}: CardProps) {
+  if (hiddenCollapse) {
+    return <BasicCard date={date} question={question} answer={answer} />;
   }
 
   return (
     <div className={styles.container}>
-      <Accordion.Root type="single" collapsible>
+      <Accordion.Root type="single" collapsible {...(isOpen ? { defaultValue: 'item-1' } : {})}>
         <Accordion.Item value="item-1">
           <CardComponent className={styles.wrapper}>
             <Accordion.Header className={styles.header}>
-              <div className={styles.chips}>
-                {/* Chip 컴포넌트로 교체 예정 */}
-                <Text color="gray" size="2">
-                  {chipContents}
-                </Text>
-                <Accordion.Trigger>
-                  {/* 아이콘 교체 시 수정 예정 */}
-                  <div>더보기</div>
+              <div className={styles.date}>
+                <h3 className="subtitle3">{date}</h3>
+                <Accordion.Trigger className={styles.trigger}>
+                  <ArrowDownIcon width="1.5rem" height="1.5rem" className={styles.icon} />
                 </Accordion.Trigger>
               </div>
-              <h3 className="body1">{title}</h3>
             </Accordion.Header>
-            <Accordion.Content>{children}</Accordion.Content>
+            <Accordion.Content className={styles.contents}>
+              <CardContents question={question} answer={answer} retrospective={retrospective} />
+            </Accordion.Content>
           </CardComponent>
         </Accordion.Item>
       </Accordion.Root>
