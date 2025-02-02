@@ -5,6 +5,7 @@ import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { Chip } from '@/components/Chip';
 import { Switch } from '@/components/Switch';
+import { Textfield } from '@/components/Textfield';
 
 import styles from './page.module.scss';
 
@@ -30,6 +31,7 @@ export default function Home() {
         <Button label="button" color="neutral" className={styles.button} />
       </div>
       <Switch checked={checked} onCheckedChange={setChecked} />
+      <Textfield placeholder="질문에 답변한 이유를 적어보세요." />
     </div>
   );
 }
