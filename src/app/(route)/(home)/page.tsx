@@ -1,16 +1,17 @@
 'use client';
 import { useState } from 'react';
 
-import { Button } from '@/components/button';
+import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
 import { Chip } from '@/components/Chip';
 import { Switch } from '@/components/Switch';
 
+import styles from './page.module.scss';
+
 export default function Home() {
   const [checked, setChecked] = useState(false);
   return (
-    <div>
-      <Button label="button" size="large" />
+    <div style={{ padding: '20px' }}>
       <Card
         title="Q. 커리어를 향상시킬 수 있는 일자리이지만 가까운 사람들과 멀어져야한다면, 이 일자리를 선택하실 건가요?"
         chipContents="1월 8일 1회차"
@@ -24,6 +25,10 @@ export default function Home() {
       <Chip size="md" color="brand">
         Text
       </Chip>
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <Button label="button" className={styles.button} />
+        <Button label="button" color="neutral" className={styles.button} />
+      </div>
       <Switch checked={checked} onCheckedChange={setChecked} />
     </div>
   );
