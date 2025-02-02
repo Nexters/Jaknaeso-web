@@ -17,19 +17,17 @@ const TABS = [
 export default function Footer() {
   const pathname = usePathname();
   return (
-    <nav>
-      <ul className={styles.container}>
-        {TABS.map((tab) => {
-          const isActive = tab.focus === ROUTES.home ? pathname === tab.focus : pathname.startsWith(tab.focus);
-          return (
-            <li key={tab.href}>
-              <Link href={tab.href}>
-                <tab.icon width={28} height={28} color={isActive ? 'black' : '#a9aeba'} />
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <footer className={styles.container}>
+      {TABS.map((tab) => {
+        const isActive = tab.focus === ROUTES.home ? pathname === tab.focus : pathname.startsWith(tab.focus);
+        return (
+          <section className={styles.section} key={tab.href}>
+            <Link href={tab.href}>
+              <tab.icon width={28} height={28} color={isActive ? 'black' : '#a9aeba'} />
+            </Link>
+          </section>
+        );
+      })}
+    </footer>
   );
 }

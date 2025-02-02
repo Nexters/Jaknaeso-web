@@ -1,9 +1,9 @@
 .container {
   width: 100%;
-  padding-left: 20px;
-  padding-bottom: 16px;
-  padding-top: 74px;
-  @include displayFlex(row, flex-start, center, 16px);
+  padding-left: 1.25rem;
+  padding-bottom: 1rem;
+  padding-top: 4.625rem;
+  @include displayFlex(row, flex-start, center, 1rem);
   list-style: none;
 }
 
