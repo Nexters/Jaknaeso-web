@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import cn from 'classnames';
 
 import styles from './Button.module.scss';
@@ -7,13 +7,15 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   color?: 'primary' | 'neutral';
   label: string;
 }
-/** Primary UI component for user interaction */
-const Button = ({ color = 'primary', label, className, ...props }: ButtonProps) => {
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ color = 'primary', label, className, ...props }, ref) => {
   return (
-    <button type="button" className={cn(styles.button, styles[`color-${color}`], className)} {...props}>
+    <button ref={ref} type="button" className={cn(styles.button, styles[`color-${color}`], className)} {...props}>
       {label}
     </button>
   );
-};
+});
+
+Button.displayName = 'Button';
 
 export default Button;
