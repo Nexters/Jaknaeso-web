@@ -7,8 +7,12 @@
   max-width: 32rem;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-}
-.dragHandle {
+  &[data-state='open'] {
+    @include fade-in;
+  }
+  &[data-state='closed'] {
+    @include fade-out;
+  }
 }
 
 .content {
@@ -16,12 +20,16 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: 261px; // 초기 설정할 높이 (동적으로 적용되어야 함)
   width: 100%;
-  max-width: 32rem; // max 세팅할 높이 (동적으로 적용되어야 함)
+  max-width: 32rem;
   background: white;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
   z-index: 1000;
-  @include slide-in-bottom;
+  &[data-state='open'] {
+    @include slide-in-bottom;
+  }
+  &[data-state='closed'] {
+    @include slide-out-bottom;
+  }
 }

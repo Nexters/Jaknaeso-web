@@ -8,17 +8,24 @@ import '@radix-ui/themes/styles.css';
 interface BottomSheetProps {
   isOpen: boolean;
   closeSheet: VoidFunction;
+  height?: number;
 }
 
-export default function BottomSheet({ isOpen, closeSheet, children }: PropsWithChildren<BottomSheetProps>) {
+const BOTTOM_SHEET_HEIGHT = 261;
+
+export default function BottomSheet({
+  isOpen,
+  closeSheet,
+  height = BOTTOM_SHEET_HEIGHT,
+  children,
+}: PropsWithChildren<BottomSheetProps>) {
   return (
     <Dialog.Root open={isOpen} onOpenChange={closeSheet}>
       {/* <Dialog.Trigger asChild>
       </Dialog.Trigger> */}
       <Dialog.Portal>
         <Dialog.Overlay className={style.overlay} />
-        <Dialog.Content className={style.content}>
-          <div className={style.dragHandle}>드래그가 가능한 영역</div>
+        <Dialog.Content className={style.content} style={{ height: `${height}px` }}>
           <Dialog.Title>title</Dialog.Title>
           <Dialog.Description>description</Dialog.Description>
           {children}
