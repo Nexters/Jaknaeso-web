@@ -32,4 +32,26 @@
   &[data-state='closed'] {
     @include slide-out-bottom;
   }
+  height: 100%;
+  @include flex-column;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 1.75rem;
+}
+
+.header {
+  @include title3;
+  @include displayFlex(row, space-between, center);
+  .svg {
+    cursor: pointer;
+  }
+}
+.description {
+  flex: 1; // ⬅️ 남는 공간을 모두 차지
+  //overflow: auto;
+}
+
+.footer {
+  height: 86px;
+  padding-bottom: 1.75rem;
 }
