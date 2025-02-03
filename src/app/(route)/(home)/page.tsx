@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       홈 페이지
-      <Button label="클릭" onClick={() => setOpen(true)} />
+      <Button onClick={() => setOpen(true)}>클릭</Button>
       <BottomSheet isOpen={open} closeSheet={() => setOpen(false)} />
     </div>
   );

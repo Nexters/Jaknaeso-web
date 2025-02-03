@@ -28,13 +28,13 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     color: 'primary',
-    label: 'Button',
+    children: 'Button',
   },
 };
 
 export const Neutral: Story = {
   args: {
     color: 'neutral',
-    label: 'Button',
+    children: 'Button',
   },
 };
