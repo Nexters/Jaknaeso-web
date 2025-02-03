@@ -6,7 +6,7 @@ import { TopBar } from '@/components/Layout/TopBar';
 export default function ReportLayout({ children }: PropsWithChildren) {
   return (
     <FooterLayout>
-      <TopBar />
+      {/*<TopBar />*/} {/* 1차 MVP 미포함 */}
       {children}
     </FooterLayout>
   );
