@@ -42,7 +42,7 @@
 .header {
   @include title3;
   @include displayFlex(row, space-between, center);
-  .svg {
+  svg {
     cursor: pointer;
   }
 }

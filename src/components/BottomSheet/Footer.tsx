@@ -1,7 +1,16 @@
-import type { PropsWithChildren } from 'react';
+import type { HTMLAttributes, PropsWithChildren } from 'react';
+import cn from 'classnames';
 
 import style from './BottomSheet.module.scss';
 
-export default function BottomSheetFooter({ children }: PropsWithChildren) {
-  return <div className={style.footer}>{children}</div>;
+export default function BottomSheetFooter({
+  children,
+  className,
+  ...props
+}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+  return (
+    <div className={cn(style.footer, className)} {...props}>
+      {children}
+    </div>
+  );
 }

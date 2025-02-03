@@ -13,7 +13,7 @@ interface BottomSheetProps {
   height?: number;
   title?: ReactNode;
   closeIcon?: boolean;
-  closeSheet?: VoidFunction;
+  closeSheet: VoidFunction;
 }
 
 const BOTTOM_SHEET_HEIGHT = 261;
