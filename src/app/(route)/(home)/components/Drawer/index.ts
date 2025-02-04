@@ -1,8 +1,3 @@
-import DrawerContent from './Content';
-import DrawerMain from './Drawer';
-import DrawerFooter from './Footer';
-
-export const Drawer = Object.assign(DrawerMain, {
-  Footer: DrawerFooter,
-  Cotent: DrawerContent,
-});
+export { default as DrawerContent } from './Content';
+export { default as Drawer } from './Drawer';
+export { default as DrawerFooter } from './Footer';

@@ -11,7 +11,7 @@ export const WINDOW_HEIGHT = typeof window !== 'undefined' ? window.innerHeight 
 export const BOTTOM_SHEET_MAX_HEIGHT = window.innerHeight - 248 - 4.25 * 16;
 export const BOTTOM_SHEET_MIN_HEIGHT = window.innerHeight - 487 - 4.25 * 16;
 
-export default function DrawerMain({ children }: PropsWithChildren) {
+export default function Drawer({ children }: PropsWithChildren) {
   const { onDragEnd, controls, isOpen } = useDrawer();
   return (
     <motion.div

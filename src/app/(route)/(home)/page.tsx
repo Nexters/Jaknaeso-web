@@ -1,13 +1,17 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 import { LineIcon } from '@/assets/icons';
 import { Button } from '@/components/Button';
 import { Capsule } from '@/components/Capsule';
 import { Chip } from '@/components/Chip';
 import { LockBtn } from '@/components/LockBtn';
 
-import { Drawer } from './components/Drawer';
 import styles from './page.module.scss';
+const Drawer = dynamic(() => import('./components/Drawer/Drawer'), { ssr: false });
+const DrawerContent = dynamic(() => import('./components/Drawer/Content'), { ssr: false });
+const DrawerFooter = dynamic(() => import('./components/Drawer/Footer'), { ssr: false });
 
 export default function Home() {
   return (
@@ -26,7 +30,7 @@ export default function Home() {
         </Capsule>
       </div>
       <Drawer>
-        <Drawer.Cotent>
+        <DrawerContent>
           <div className={styles.grid}>
             <LockBtn label="1회차" className={styles.lock} />
             <LockBtn label="1회차" className={styles.lock} disabled />
@@ -46,10 +50,10 @@ export default function Home() {
             <LockBtn label="1회차" className={styles.lock} variant="completedToday" />
             <LockBtn label="1회차" className={styles.lock} />
           </div>
-        </Drawer.Cotent>
-        <Drawer.Footer>
+        </DrawerContent>
+        <DrawerFooter>
           <Button style={{ height: '58px' }}>오늘의 질문 답변하기</Button>
-        </Drawer.Footer>
+        </DrawerFooter>
       </Drawer>
     </div>
   );
