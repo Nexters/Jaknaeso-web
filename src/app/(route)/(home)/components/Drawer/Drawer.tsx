@@ -7,9 +7,9 @@ import styles from './Drawer.module.scss';
 import DrawerHandle from './Handle';
 import { useDrawer } from './useDrawer';
 
-export const WINDOW_HEIGHT = window.innerHeight;
-export const BOTTOM_SHEET_MAX_HEIGHT = window.innerHeight - 261;
-export const BOTTOM_SHEET_MIN_HEIGHT = window.innerHeight - 487;
+export const WINDOW_HEIGHT = typeof window !== 'undefined' ? window.innerHeight : 768;
+export const BOTTOM_SHEET_MAX_HEIGHT = window.innerHeight - 248 - 4.25 * 16;
+export const BOTTOM_SHEET_MIN_HEIGHT = window.innerHeight - 487 - 4.25 * 16;
 
 export default function DrawerMain({ children }: PropsWithChildren) {
   const { onDragEnd, controls, isOpen } = useDrawer();
@@ -17,12 +17,9 @@ export default function DrawerMain({ children }: PropsWithChildren) {
     <motion.div
       drag="y"
       onDragEnd={onDragEnd}
-      initial="hidden"
+      initial="visible"
       animate={controls}
       variants={{
-        /**
-         * 아예 스크롤해서 닫게하고 싶은 경우 : { top: WINDOW_HEIGHT }
-         */
         visible: { top: BOTTOM_SHEET_MAX_HEIGHT, bottom: '4.25rem' },
         hidden: { top: BOTTOM_SHEET_MIN_HEIGHT, bottom: '4.25rem' },
       }}
@@ -30,8 +27,10 @@ export default function DrawerMain({ children }: PropsWithChildren) {
       dragElastic={0.2}
       className={styles.container}
     >
-      <DrawerHandle isOpen={isOpen} />
-      <div className={styles.layout}>{children}</div>
+      <div className={styles.layout}>
+        <DrawerHandle isOpen={isOpen} />
+        {children}
+      </div>
     </motion.div>
   );
 }
