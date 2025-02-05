@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
@@ -17,6 +18,7 @@ const DrawerFooter = dynamic(() => import('./components/Drawer/Footer'), { ssr: 
 
 export default function Home() {
   const routes = useRouter();
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -32,7 +34,7 @@ export default function Home() {
           <label>15개</label>
         </Capsule>
       </div>
-      <Drawer>
+      <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         <DrawerContent>
           <div className={styles.grid}>
             <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
@@ -51,37 +53,41 @@ export default function Home() {
             />
             <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
 
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completed"
-            />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completedToday"
-            />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+            {!isOpen && (
+              <>
+                <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+                <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
+                <LockBtn
+                  label="1회차"
+                  className={styles.lock}
+                  onClick={() => routes.push(ROUTES.game)}
+                  variant="completed"
+                />
+                <LockBtn
+                  label="1회차"
+                  className={styles.lock}
+                  onClick={() => routes.push(ROUTES.game)}
+                  variant="completedToday"
+                />
+                <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
 
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completed"
-            />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completedToday"
-            />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+                <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+                <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
+                <LockBtn
+                  label="1회차"
+                  className={styles.lock}
+                  onClick={() => routes.push(ROUTES.game)}
+                  variant="completed"
+                />
+                <LockBtn
+                  label="1회차"
+                  className={styles.lock}
+                  onClick={() => routes.push(ROUTES.game)}
+                  variant="completedToday"
+                />
+                <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+              </>
+            )}
           </div>
         </DrawerContent>
         <DrawerFooter>
