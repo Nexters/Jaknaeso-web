@@ -23,17 +23,6 @@ export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildre
   const controls = useAnimation();
   const prevIsOpen = usePreviousValue(isOpen);
 
-  // const onDragEnd = (info: any) => {
-  //   const shouldClose = info?.y < 550 || info?.y < -10;
-  //   if (shouldClose) {
-  //     controls.start('hidden');
-  //     setIsOpen(false);
-  //   } else {
-  //     controls.start('visible');
-  //     setIsOpen(true);
-  //   }
-  // };
-
   const onDragEnd = (event: PointerEvent, { point, velocity }: PanInfo): void => {
     const shouldClose = (velocity.y > -20 && event.type === 'pointerdown') || velocity?.y < 550;
 
@@ -71,7 +60,7 @@ export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildre
       className={styles.container}
     >
       <div className={styles.layout}>
-        <DrawerHandle isOpen={isOpen} />
+        <DrawerHandle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
         {children}
       </div>
     </motion.div>
