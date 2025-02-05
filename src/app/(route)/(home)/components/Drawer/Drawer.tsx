@@ -1,6 +1,7 @@
 'use client';
 
 import { type PropsWithChildren, useEffect } from 'react';
+import type { PanInfo } from 'framer-motion';
 import { motion, useAnimation } from 'framer-motion';
 
 import { usePreviousValue } from '@/hooks';
@@ -8,7 +9,7 @@ import { usePreviousValue } from '@/hooks';
 import styles from './Drawer.module.scss';
 import DrawerHandle from './Handle';
 
-export const WINDOW_HEIGHT = typeof window !== 'undefined' ? window.innerHeight : 768;
+//export const WINDOW_HEIGHT = typeof window !== 'undefined' ? window.innerHeight : 768;
 export const BOTTOM_SHEET_MAX_HEIGHT = 500;
 export const BOTTOM_SHEET_MIN_HEIGHT = 261;
 
@@ -22,8 +23,20 @@ export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildre
   const controls = useAnimation();
   const prevIsOpen = usePreviousValue(isOpen);
 
-  const onDragEnd = (info: any) => {
-    const shouldClose = info?.y < 550;
+  // const onDragEnd = (info: any) => {
+  //   const shouldClose = info?.y < 550 || info?.y < -10;
+  //   if (shouldClose) {
+  //     controls.start('hidden');
+  //     setIsOpen(false);
+  //   } else {
+  //     controls.start('visible');
+  //     setIsOpen(true);
+  //   }
+  // };
+
+  const onDragEnd = (event: PointerEvent, { point, velocity }: PanInfo): void => {
+    const shouldClose = (velocity.y > -20 && event.type === 'pointerdown') || velocity?.y < 550;
+
     if (shouldClose) {
       controls.start('hidden');
       setIsOpen(false);
