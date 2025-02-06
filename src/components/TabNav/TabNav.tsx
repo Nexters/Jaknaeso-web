@@ -1,22 +1,31 @@
 import { TabNav } from '@radix-ui/themes';
-import styles from './TabNav.module.scss.module.scss';
+
+import styles from './TabNav.module.scss';
+import cn from 'classnames';
+import { usePathname } from 'next/navigation';
 
 interface CustomTabNavProps {
-  menus: Menu[];
+  tabs: Tab[];
+  className?: string;
 }
 
-type Menu = {
-  name: string;
-  link: string;
+type Tab = {
+  href: string;
+  label: string;
 };
 
-export default function CustomTabNav({ menus }: CustomTabNavProps) {
+export default function CustomTabNav({ tabs, className }: CustomTabNavProps) {
+  const currentPath = usePathname();
+  const isActive = (targetPath: string) => {
+    return currentPath.includes(targetPath);
+  };
+
   return (
-    <TabNav.Root>
-      {menus.map((menu: Menu) => {
+    <TabNav.Root className={cn(styles.container)}>
+      {tabs.map((tab: Tab) => {
         return (
-          <TabNav.Link href={menu.link} key={menu.name}>
-            menu.name
+          <TabNav.Link className={styles.tab} href={tab.href} key={tab.label} active={isActive(tab.href)}>
+            {tab.label}
           </TabNav.Link>
         );
       })}
