@@ -92,7 +92,9 @@ export default function Home() {
             </div>
           </DrawerContent>
           <DrawerFooter>
-            <Button style={{ height: '58px' }}>오늘의 질문 답변하기</Button>
+            <Button style={{ height: '58px' }} onClick={() => routes.push(ROUTES.game)}>
+              오늘의 질문 답변하기
+            </Button>
           </DrawerFooter>
         </Drawer>
       </div>
