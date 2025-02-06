@@ -9,6 +9,8 @@ export const ROUTES = {
   mypage: '/mypage',
   game: '/game',
   gameComplete: '/game/complete',
+  /** UT 이후 제거 예정 */
+  selectGame: '/select',
 } as const;
 
 // TODO : 추후에 슬라이더/이중택일 쿼리 적용

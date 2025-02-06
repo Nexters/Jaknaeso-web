@@ -1,7 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 import { LineIcon } from '@/assets/icons';
 import { Button } from '@/components/Button';
@@ -17,6 +18,16 @@ const DrawerFooter = dynamic(() => import('./components/Drawer/Footer'), { ssr: 
 
 export default function Home() {
   const routes = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const surveyType = localStorage.getItem('surveyType');
+      if (!surveyType) {
+        redirect(ROUTES.selectGame);
+      }
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
