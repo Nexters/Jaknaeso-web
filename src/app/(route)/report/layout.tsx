@@ -57,7 +57,13 @@ export default function ReportLayout({ children }: PropsWithChildren) {
         <TabNav tabs={TABS} />
         {children}
       </FooterLayout>
-      <BottomSheet title="월 선택하기" isOpen={open} height={380} closeSheet={() => setOpen(false)} closeIcon>
+      <BottomSheet
+        title="가치관 캐릭터 선택하기"
+        isOpen={open}
+        height={380}
+        closeSheet={() => setOpen(false)}
+        closeIcon
+      >
         <BottomSheet.Content className={styles.characterList}>
           {characters.map((character) => (
             <div key={character.id} className={styles.characterItem} onClick={() => handleCharacter(character)}>
