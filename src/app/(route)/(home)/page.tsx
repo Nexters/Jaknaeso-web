@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { redirect, useRouter } from 'next/navigation';
 
@@ -28,77 +28,86 @@ export default function Home() {
     }
   }, []);
 
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <Chip size="md" color="neutral">
-          <h5>1번째 캐릭터</h5>
-        </Chip>
-        <h1 className="title01">valueType</h1>
-      </div>
-      <div className={styles.wrapper}>
-        <Capsule className={styles.capsule}>
-          <label>캐릭터 완성까지</label>
-          <LineIcon color="#A9AEBA" />
-          <label>15개</label>
-        </Capsule>
-      </div>
-      <Drawer>
-        <DrawerContent>
-          <div className={styles.grid}>
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
-            <LockBtn label="1회차" className={styles.lock} disabled onClick={() => routes.push(ROUTES.game)} />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              variant="completed"
-              onClick={() => routes.push(ROUTES.game)}
-            />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              variant="completedToday"
-              onClick={() => routes.push(ROUTES.game)}
-            />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+    <div className={styles.layout}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <Chip size="md" color="neutral">
+            <h5>1번째 캐릭터</h5>
+          </Chip>
+          <h1 className="title01">valueType</h1>
+        </div>
+        <div className={styles.wrapper}>
+          <Capsule className={styles.capsule}>
+            <label>캐릭터 완성까지</label>
+            <LineIcon color="#A9AEBA" />
+            <label>15개</label>
+          </Capsule>
+        </div>
+        <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+          <DrawerContent>
+            <div className={styles.grid}>
+              <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+              <LockBtn label="1회차" className={styles.lock} disabled onClick={() => routes.push(ROUTES.game)} />
+              <LockBtn
+                label="1회차"
+                className={styles.lock}
+                variant="completed"
+                onClick={() => routes.push(ROUTES.game)}
+              />
+              <LockBtn
+                label="1회차"
+                className={styles.lock}
+                variant="completedToday"
+                onClick={() => routes.push(ROUTES.game)}
+              />
+              <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
 
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completed"
-            />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completedToday"
-            />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+              {!isOpen && (
+                <>
+                  <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+                  <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
+                  <LockBtn
+                    label="1회차"
+                    className={styles.lock}
+                    onClick={() => routes.push(ROUTES.game)}
+                    variant="completed"
+                  />
+                  <LockBtn
+                    label="1회차"
+                    className={styles.lock}
+                    onClick={() => routes.push(ROUTES.game)}
+                    variant="completedToday"
+                  />
+                  <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
 
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completed"
-            />
-            <LockBtn
-              label="1회차"
-              className={styles.lock}
-              onClick={() => routes.push(ROUTES.game)}
-              variant="completedToday"
-            />
-            <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
-          </div>
-        </DrawerContent>
-        <DrawerFooter>
-          <Button style={{ height: '58px' }}>오늘의 질문 답변하기</Button>
-        </DrawerFooter>
-      </Drawer>
+                  <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+                  <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} disabled />
+                  <LockBtn
+                    label="1회차"
+                    className={styles.lock}
+                    onClick={() => routes.push(ROUTES.game)}
+                    variant="completed"
+                  />
+                  <LockBtn
+                    label="1회차"
+                    className={styles.lock}
+                    onClick={() => routes.push(ROUTES.game)}
+                    variant="completedToday"
+                  />
+                  <LockBtn label="1회차" className={styles.lock} onClick={() => routes.push(ROUTES.game)} />
+                </>
+              )}
+            </div>
+          </DrawerContent>
+          <DrawerFooter>
+            <Button style={{ height: '58px' }} onClick={() => routes.push(ROUTES.game)}>
+              오늘의 질문 답변하기
+            </Button>
+          </DrawerFooter>
+        </Drawer>
+      </div>
     </div>
   );
 }
