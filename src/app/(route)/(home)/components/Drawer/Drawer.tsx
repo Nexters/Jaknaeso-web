@@ -10,7 +10,7 @@ import styles from './Drawer.module.scss';
 import DrawerHandle from './Handle';
 
 //export const WINDOW_HEIGHT = typeof window !== 'undefined' ? window.innerHeight : 768;
-export const BOTTOM_SHEET_MAX_HEIGHT = 500;
+export const BOTTOM_SHEET_MAX_HEIGHT = 487;
 export const BOTTOM_SHEET_MIN_HEIGHT = 261;
 
 interface DrawerProps {
@@ -24,7 +24,7 @@ export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildre
   const prevIsOpen = usePreviousValue(isOpen);
 
   const onDragEnd = (event: PointerEvent, { point, velocity }: PanInfo): void => {
-    const shouldClose = (velocity.y > -20 && event.type === 'pointerdown') || velocity?.y < 550;
+    const shouldClose = event.type === 'pointerdown' || velocity?.y < 487;
 
     if (shouldClose) {
       controls.start('hidden');
