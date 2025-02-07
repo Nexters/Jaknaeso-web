@@ -3,14 +3,14 @@
 import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 
+import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
+import { BottomSheet } from '@/components/BottomSheet';
 import { FooterLayout } from '@/components/Layout/Footer';
 import { TabNav } from '@/components/TabNav';
-import { BottomSheet } from '@/components/BottomSheet';
-import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
+import { TextButton } from '@/components/TextButton';
 import { ROUTES } from '@/constants';
 
 import styles from './layout.module.scss';
-import { TextButton } from '@/components/TextButton';
 
 type Character = {
   id: number;
