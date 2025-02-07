@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import dayjs from 'dayjs';
+
 import { Card } from '@/components/Card';
 
 import styles from './page.module.scss';
@@ -41,6 +42,7 @@ export default function ReportQuestions() {
       {questions.map((question, index) => (
         <Card
           key={index}
+          count={index + 1}
           date={formatDate(question.date)}
           question={question.question}
           answer={question.answer}
