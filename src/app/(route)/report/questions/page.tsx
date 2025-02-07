@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
 import { Card } from '@/components/Card';
@@ -36,6 +36,21 @@ export default function ReportQuestions() {
   };
 
   const [questions, setQuestions] = useState(mockQuestions);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const report = localStorage.getItem('report');
+      const retrospective = localStorage.getItem('retrospective');
+
+      if (!report) return;
+      setQuestions([
+        {
+          ...JSON.parse(report),
+          retrospective,
+        },
+      ]);
+    }
+  }, []);
 
   return (
     <div className={styles.container}>
