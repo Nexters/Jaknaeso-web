@@ -3,14 +3,14 @@
 import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 
+import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
+import { BottomSheet } from '@/components/BottomSheet';
 import { FooterLayout } from '@/components/Layout/Footer';
 import { TabNav } from '@/components/TabNav';
-import { BottomSheet } from '@/components/BottomSheet';
-import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
+import { TextButton } from '@/components/TextButton';
 import { ROUTES } from '@/constants';
 
 import styles from './layout.module.scss';
-import { TextButton } from '@/components/TextButton';
 
 type Character = {
   id: number;
@@ -42,17 +42,24 @@ export default function ReportLayout({ children }: PropsWithChildren) {
   const [open, setOpen] = useState(false);
   const [characters, setCharacters] = useState<Character[]>(MOCK_CHARACTERS);
   const [selectedCharacter, setSelectedCharacter] = useState<Character>(MOCK_CHARACTER1);
+  const setItem = (key: string, item: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, item);
+    }
+  };
 
   const handleCharacter = (character: Character) => {
     setSelectedCharacter(character);
     setOpen(false);
+    setItem('character', character.name);
   };
 
   return (
     <div className={styles.container}>
       <FooterLayout>
         <TextButton className={styles.characterButton} onClick={() => setOpen(true)}>
-          {selectedCharacter.name} <ArrowDown2Icon className={styles.characterButtonIcon} width={24} height={24} />
+          {localStorage.getItem('character') ?? selectedCharacter.name}
+          <ArrowDown2Icon className={styles.characterButtonIcon} width={24} height={24} />
         </TextButton>
         <TabNav tabs={TABS} />
         {children}
