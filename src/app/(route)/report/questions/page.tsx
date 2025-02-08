@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import dayjs from 'dayjs';
 
+import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
+import CharacterSelectButton from '@/app/(route)/report/components/CharacterSelectButton';
+import CharacterTabNav from '@/app/(route)/report/components/CharacterTabNav';
 import { Card } from '@/components/Card';
 
 import styles from './page.module.scss';
-import CharacterTabNav from '@/app/(route)/report/components/CharacterTabNav';
-import CharacterSelectButton from '@/app/(route)/report/components/CharacterSelectButton';
-import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
 
 type Character = {
   id: number;
@@ -62,8 +62,6 @@ export default function ReportQuestions() {
     const format = 'M월 D일';
     return dayjs(date).format(format);
   };
-
-  const [questions, setQuestions] = useState(mockQuestions);
 
   return (
     <div>
