@@ -1,7 +1,7 @@
 'use client';
 
 import type { PropsWithChildren } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -41,32 +41,12 @@ const MOCK_CHARACTERS = [MOCK_CHARACTER1, MOCK_CHARACTER2];
 export default function ReportLayout({ children }: PropsWithChildren) {
   const [open, setOpen] = useState(false);
   const [characters, setCharacters] = useState<Character[]>(MOCK_CHARACTERS);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character>();
-  const setItem = (key: string, item: string) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(key, item);
-    }
-  };
+  const [selectedCharacter, setSelectedCharacter] = useState<Character>(MOCK_CHARACTER1);
 
   const handleCharacter = (character: Character) => {
     setSelectedCharacter(character);
     setOpen(false);
-    setItem('character', character.name);
   };
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedCharacter = localStorage.getItem('character');
-      if (storedCharacter) {
-        const foundCharacter = MOCK_CHARACTERS.find((char) => char.name === storedCharacter);
-        if (foundCharacter) {
-          setSelectedCharacter(foundCharacter); // 찾은 캐릭터로 업데이트
-        }
-      } else {
-        setSelectedCharacter(MOCK_CHARACTER1); // 로컬스토리지에 값이 없으면 기본값 설정
-      }
-    }
-  }, []);
 
   return (
     <div className={styles.container}>
