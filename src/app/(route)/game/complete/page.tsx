@@ -7,6 +7,16 @@ import styles from './page.module.scss';
 
 export default function GameComplete() {
   const router = useRouter();
+  const setItem = (key: string, item: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, item);
+    }
+  };
+
+  const onClick = () => {
+    setItem('isCompletedSurvey', 'true');
+    router.push('/');
+  };
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -19,7 +29,7 @@ export default function GameComplete() {
       </div>
       <div className={styles.content}>
         {/* 로티 이미지 들어갈 부분, 임시 조치 */}
-        <div
+        {/* <div
           style={{
             width: '220px',
             height: '220px',
@@ -32,10 +42,10 @@ export default function GameComplete() {
           }}
         >
           로티 애니메이션
-        </div>
+        </div> */}
       </div>
       <div className={styles.footer}>
-        <Button color="primary" onClick={() => router.push('/')}>
+        <Button color="primary" onClick={onClick}>
           완료
         </Button>
       </div>
