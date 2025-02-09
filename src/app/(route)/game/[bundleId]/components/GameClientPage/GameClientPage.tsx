@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 import { Slider } from '@/components/Slider';
 import { ROUTES } from '@/constants';
 
-import FlipCard from './components/FlipCard';
-import GamePageLayout from './components/GameLayout';
-import styles from './page.module.scss';
+import FlipCard from '../FlipCard';
+import GamePageLayout from '../GameLayout';
+
+import styles from './GameClientPage.module.scss';
 
 const MOCK_DATA_BALANCE = {
   id: 1,
@@ -72,7 +73,9 @@ export default function Game() {
   const [open, setOpen] = useState(false);
   const [answer, setAnswer] = useState(0);
   const router = useRouter();
+  const { bundleId } = useParams();
 
+  // const { data } = useGetTodaySurvey(Number(bundleId));
   const surveyType = 'balance' as SurveyType;
   const survey = MOCK_DATA.balance;
 
