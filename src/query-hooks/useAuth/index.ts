@@ -15,12 +15,12 @@ export const useAuthMutation = () => {
   const postKakaoAuth = useMutation({
     mutationFn: authApis.postKakao,
     onSuccess: (res) => {
-      setTokens(res.data.data.accessToken, res.data.data.refreshToken);
+      setTokens(res.accessToken, res.refreshToken);
       router.push(ROUTES.home);
-      memberApis.get(res.data.data.memberId).then((member) => {
+      memberApis.get(res.memberId).then((member) => {
         setMember({
           ...member,
-          memberId: res.data.data.memberId,
+          memberId: res.memberId,
         });
       });
     },
@@ -28,12 +28,12 @@ export const useAuthMutation = () => {
   const postAppleAuth = useMutation({
     mutationFn: authApis.postApple,
     onSuccess: (res) => {
-      setTokens(res.data.data.accessToken, res.data.data.refreshToken);
+      setTokens(res.accessToken, res.refreshToken);
       router.push(ROUTES.home);
-      memberApis.get(res.data.data.memberId).then((member) => {
+      memberApis.get(res.memberId).then((member) => {
         setMember({
           ...member,
-          memberId: res.data.data.memberId,
+          memberId: res.memberId,
         });
       });
     },
