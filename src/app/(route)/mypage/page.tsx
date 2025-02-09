@@ -19,7 +19,6 @@ export default function MyPage() {
   return (
     <div>
       <ProfileCard member={member} />
-      <UserSettings />
       <UserActionFooter memberId={member.memberId} />
     </div>
   );
