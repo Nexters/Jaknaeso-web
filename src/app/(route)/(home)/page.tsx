@@ -6,7 +6,7 @@ import { HomePage } from './components/Page';
 
 export default function Home() {
   return (
-    <PrefetchHydration queryKey={surveyKeys.get()} queryFn={surveyServerApis.get}>
+    <PrefetchHydration queryKey={surveyKeys.lists()} queryFn={surveyServerApis.getHistory}>
       <HomePage />
     </PrefetchHydration>
   );

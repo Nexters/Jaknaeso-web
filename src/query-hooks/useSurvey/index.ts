@@ -6,8 +6,8 @@ import type { SurveyResponse } from './types';
 
 export const useGetSurvey = (options?: UseQueryOptions<SurveyResponse, Error>) => {
   return useQuery<SurveyResponse, Error>({
-    queryKey: surveyKeys.get(),
-    queryFn: surveyApis.get,
+    queryKey: surveyKeys.lists(),
+    queryFn: surveyApis.getHistory,
     ...options,
   });
 };
