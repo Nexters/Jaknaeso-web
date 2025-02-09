@@ -1,6 +1,6 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
-import memberApis from './api';
+import memberApis from './api.client';
 import memberKeys from './keys';
 import type { MemberResponse } from './types';
 
