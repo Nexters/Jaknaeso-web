@@ -12,7 +12,7 @@ const useGetSurvey = (options?: UseQueryOptions<HistoryResponse, Error>) => {
   });
 };
 
-const useGetTodaySurvey = (bundleId: number, options?: UseQueryOptions<TodaySurveyResponse, Error>) =>
+const useGetTodaySurvey = (bundleId: string, options?: UseQueryOptions<TodaySurveyResponse, Error>) =>
   useQuery<TodaySurveyResponse, Error>({
     queryFn: () => surveyApis.getTodaySurvey(bundleId),
     queryKey: surveyKeys.list([bundleId]),

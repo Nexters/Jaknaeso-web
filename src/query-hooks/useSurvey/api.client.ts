@@ -8,7 +8,7 @@ const getHistory = async () => {
   return res.data.data;
 };
 
-const getTodaySurvey = async (bundleId: number) => {
+const getTodaySurvey = async (bundleId: string) => {
   const res = await clientApi.get<ResponseDTO<TodaySurveyResponse>>(`/api/v1/surveys/${bundleId}`);
   return res.data.data;
 };

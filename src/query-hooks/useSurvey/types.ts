@@ -6,7 +6,7 @@ export type SurveySubmissionId = {
 
 export type SurveyOption = {
   id: number;
-  optionContent: string;
+  optionContents: string;
 };
 
 export type HistoryResponse = {

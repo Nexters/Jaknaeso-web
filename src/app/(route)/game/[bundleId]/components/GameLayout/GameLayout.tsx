@@ -10,7 +10,7 @@ import GameBottomSheet from '../GameBottomSheet';
 
 import styles from './GameLayout.module.scss';
 
-type SurveyType = 'balance' | 'multiple';
+type SurveyType = 'BALANCE' | 'MULTIPLE_CHOICE';
 
 interface GamePageLayoutProps {
   title: string;
@@ -34,7 +34,7 @@ export default function GamePageLayout({
 }: PropsWithChildren<GamePageLayoutProps>) {
   const router = useRouter();
   const goHomePage = () => router.push(ROUTES.home);
-  const isBalance = surveyType === 'balance';
+  const isBalance = surveyType === 'BALANCE';
 
   return (
     <div className={cn(styles.container, className)}>
