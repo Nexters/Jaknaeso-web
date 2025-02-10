@@ -38,9 +38,11 @@ export default function RootLayout({
       <body>
         <ReactQueryProviders>
           <div className="container">
-            <main className="layout">{children}</main>
+            <main className="layout">
+              {children}
+              <Toast />
+            </main>
           </div>
-          <Toast />
         </ReactQueryProviders>
       </body>
     </html>
