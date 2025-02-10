@@ -1,9 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+
+import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
 import CharacterSelectButton from '@/app/(route)/report/components/CharacterSelectButton';
 import CharacterTabNav from '@/app/(route)/report/components/CharacterTabNav';
-import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
+
+import { ReportAnalysisPage } from './components/Page';
 
 type Character = {
   id: number;
@@ -41,6 +44,7 @@ export default function ReportAnalysis() {
         onCloseSheet={() => setOpen(false)}
         onSelect={handleCharacter}
       />
+      <ReportAnalysisPage />
     </div>
   );
 }
