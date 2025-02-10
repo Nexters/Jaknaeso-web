@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import { AppleScript } from '@/components/appleScript';
 import { KakaoScript } from '@/components/KakaoScript';
+import { Toast } from '@/components/Toast';
 
 import ReactQueryProviders from '../providers/ReactQueryProvider';
 
@@ -39,6 +40,7 @@ export default function RootLayout({
           <div className="container">
             <main className="layout">{children}</main>
           </div>
+          <Toast />
         </ReactQueryProviders>
       </body>
     </html>
