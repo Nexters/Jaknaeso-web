@@ -11,3 +11,4 @@ export const useGetMember = (id: number, options?: UseQueryOptions<MemberRespons
     ...options,
   });
 };
+export const useMemberMutation = () => {};
