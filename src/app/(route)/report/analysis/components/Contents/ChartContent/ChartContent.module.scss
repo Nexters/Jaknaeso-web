@@ -7,10 +7,12 @@
   @include displayFlex(column, flex-start, flex-start, 0.25rem);
   h5 {
     color: $neutral-700;
-    // width: 100%;
-    // max-width: 12.75rem;
-    // word-break: break-word;
-    // overflow-wrap: break-word;
+
     @include text-wrap(12.75rem);
   }
+}
+.chart {
+  @include flex-center;
+  padding-left: 3.6875rem;
+  padding-right: 3.6875rem;
 }

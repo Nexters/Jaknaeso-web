@@ -37,6 +37,7 @@ export default function ReportAnalysis() {
     <div>
       <CharacterSelectButton selectedCharacterName={selectedCharacter.name} onClick={() => setOpen(true)} />
       <CharacterTabNav />
+      <ReportAnalysisPage />
       <CharacterSelectBottomSheet
         open={open}
         characters={characters}
@@ -44,7 +45,6 @@ export default function ReportAnalysis() {
         onCloseSheet={() => setOpen(false)}
         onSelect={handleCharacter}
       />
-      <ReportAnalysisPage />
     </div>
   );
 }
