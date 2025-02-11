@@ -22,3 +22,13 @@ export type TodaySurveyResponse = {
   surveyType: SurveyType;
   options: SurveyOption[];
 };
+
+export type SurveySubmission = {
+  optionId: number;
+  comment: string;
+};
+
+export type SurveySubmissionArgs = {
+  bundleId: string;
+  survey: SurveySubmission;
+};

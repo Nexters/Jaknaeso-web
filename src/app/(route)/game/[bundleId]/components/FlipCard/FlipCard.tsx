@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, useCycle } from 'framer-motion';
 
 import { ArrowRightIcon } from '@/assets/icons';
@@ -21,6 +22,10 @@ const FlipCard = ({ options, onSelect }: FlipCardProps) => {
     onSelect(id);
   };
 
+  useEffect(() => {
+    onSelect(options[0].id);
+  }, []);
+
   return (
     <div className={styles.cardContainer}>
       <div className={styles.flipCard}>
@@ -32,7 +37,7 @@ const FlipCard = ({ options, onSelect }: FlipCardProps) => {
         >
           <p className={styles.cardTitle}>첫번째 질문</p>
           <h3 className="title3">{options[0].optionContents}</h3>
-          <TextButton onClick={() => onClick(1)} className={styles.nextButton}>
+          <TextButton onClick={() => onClick(options[1].id)} className={styles.nextButton}>
             다음 답변 선택 <ArrowRightIcon width="1.5rem" height="1.5rem" />
           </TextButton>
         </motion.div>
@@ -44,7 +49,7 @@ const FlipCard = ({ options, onSelect }: FlipCardProps) => {
         >
           <p className={styles.cardTitle}>두번째 질문</p>
           <h3 className="title3">{options[1].optionContents}</h3>
-          <TextButton onClick={() => onClick(0)} className={styles.nextButton}>
+          <TextButton onClick={() => onClick(options[0].id)} className={styles.nextButton}>
             다음 답변 선택 <ArrowRightIcon width="1.5rem" height="1.5rem" />
           </TextButton>
         </motion.div>
