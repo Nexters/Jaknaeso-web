@@ -1,7 +1,7 @@
 export type SurveyType = 'MULTIPLE_CHOICE' | 'BALANCE';
 
 export type SurveyParams = {
-  getSubmissions: {
+  get: {
     bundleId: number;
   };
 };

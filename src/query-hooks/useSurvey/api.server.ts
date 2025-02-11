@@ -16,7 +16,7 @@ const getTodaySurvey: QueryFunction<TodaySurveyResponse> = async ({ queryKey }) 
   return res.data.data;
 };
 
-const getSubmissions = async (memberId: number, params: SurveyParams['getSubmissions']) => {
+const getSubmissions = async (memberId: number, params: SurveyParams['get']) => {
   const res = await serverApi.get<ResponseDTO<SurveySubmissionResponse>>(
     `/api/v1/surveys/members/${memberId}/submissions`,
     { params },

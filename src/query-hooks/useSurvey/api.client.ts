@@ -24,7 +24,7 @@ const submitSurvey = async (bundleId: string, survey: SurveySubmission) => {
   return data;
 };
 
-const getSubmissions = async (memberId: number, params: SurveyParams['getSubmissions']) => {
+const getSubmissions = async (memberId: number, params: SurveyParams['get']) => {
   const res = await clientApi.get<ResponseDTO<SurveySubmissionResponse>>(
     `/api/v1/surveys/members/${memberId}/submissions`,
     { params },
