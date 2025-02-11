@@ -1,15 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
 import { Card } from '@/components/Card';
 import styles from './page.module.scss';
 import CharacterSelectLayout from '../components/CharacterSelectLayout';
+import { useGetCharacters } from '@/query-hooks/useCharacter';
+import { useMemberStore } from '@/stores';
 
 type Character = {
-  id: number;
-  name: string;
+  bundleId: number;
+  ordinalNumber: number;
 };
 
 type Question = {
@@ -21,17 +23,12 @@ type Question = {
 
 const mockQuestions: Question[] = [];
 
-const MOCK_CHARACTER1 = {
-  id: 1,
-  name: '첫번째 캐릭터',
-};
-const MOCK_CHARACTERS = [MOCK_CHARACTER1];
-
 export default function ReportQuestions() {
   const [open, setOpen] = useState(false);
-  const [characters, setCharacters] = useState<Character[]>(MOCK_CHARACTERS);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character>(MOCK_CHARACTER1);
   const [questions, setQuestions] = useState(mockQuestions);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character>();
+
+  const { data: characters } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
 
   const handleCharacter = (character: Character) => {
     setSelectedCharacter(character);
@@ -43,11 +40,17 @@ export default function ReportQuestions() {
     return dayjs(date).format(format);
   };
 
+  useEffect(() => {
+    if (characters && characters.characters.length > 0) {
+      setSelectedCharacter(characters.characters[0]);
+    }
+  }, [characters]);
+
   return (
     <CharacterSelectLayout
       open={open}
       selectedCharacter={selectedCharacter}
-      characters={characters}
+      characters={characters?.characters}
       onButtonClick={() => setOpen(true)}
       onCloseSheet={() => setOpen(false)}
       onSelect={handleCharacter}

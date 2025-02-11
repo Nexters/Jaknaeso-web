@@ -1,14 +1,14 @@
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
-import type { CharacterResponse, CharacterSearchParam } from './types';
+import type { CharacterSearchParam, CharactersResponse } from './types';
 import characterKeys from './keys';
 import characterApis from './api.client';
 
 export const useGetCharacters = (
   params: CharacterSearchParam,
-  options?: UseQueryOptions<CharacterResponse[], Error>,
+  options?: UseQueryOptions<CharactersResponse, Error>,
 ) => {
-  return useQuery<CharacterResponse[], Error>({
+  return useQuery<CharactersResponse, Error>({
     queryKey: [characterKeys.lists(), params],
     queryFn: characterApis.getCharacters,
     ...options,

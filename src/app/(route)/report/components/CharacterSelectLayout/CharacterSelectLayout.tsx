@@ -8,30 +8,30 @@ import styles from './CharacterSelectLayout.module.scss';
 
 type Props = {
   open: boolean;
-  selectedCharacter: Character;
-  characters: Character[];
+  selectedCharacter?: Character;
+  characters?: Character[];
   onButtonClick: () => void;
   onCloseSheet: () => void;
   onSelect: (character: Character) => void;
 };
 
 type Character = {
-  id: number;
-  name: string;
+  bundleId: number;
+  ordinalNumber: number;
 };
 
 export default function CharacterSelectLayout({
   children,
   open,
   selectedCharacter,
-  characters,
+  characters = [],
   onButtonClick,
   onCloseSheet,
   onSelect,
 }: PropsWithChildren<Props>) {
   return (
     <div>
-      <CharacterSelectButton selectedCharacterName={selectedCharacter.name} onClick={onButtonClick} />
+      <CharacterSelectButton selectedCharacter={selectedCharacter} onClick={onButtonClick} />
       <CharacterTabNav />
       <div className={styles.content}>{children}</div>
       <CharacterSelectBottomSheet
