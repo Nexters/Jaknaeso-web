@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as RadxSlider from '@radix-ui/react-slider';
 
 import { ArrowDown2Icon, ArrowUp2Icon, CheckIcon } from '@/assets/icons';
@@ -16,11 +16,15 @@ interface SliderProps {
 }
 
 const Slider = ({ options, value, setValue }: SliderProps) => {
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(100);
   const onClick = (id: number, index: number) => {
     setValue(id);
-    setSliderValue(index * 25);
+    setSliderValue(100 - index * 25);
   };
+
+  useEffect(() => {
+    setValue(options[0].id);
+  }, []);
 
   return (
     <div className={styles.container}>
