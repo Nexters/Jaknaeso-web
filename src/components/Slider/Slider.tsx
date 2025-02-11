@@ -24,7 +24,7 @@ const Slider = ({ options, value, setValue }: SliderProps) => {
 
   useEffect(() => {
     setValue(options[0].id);
-  }, []);
+  }, [options, setValue]);
 
   return (
     <div className={styles.container}>

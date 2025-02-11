@@ -3,14 +3,12 @@ import { motion, useCycle } from 'framer-motion';
 
 import { ArrowRightIcon } from '@/assets/icons';
 import { TextButton } from '@/components/TextButton';
+import type { SurveyOption } from '@/query-hooks/useSurvey/types';
 
 import styles from './FlipCard.module.scss';
 
 interface FlipCardProps {
-  options: {
-    id: number;
-    optionContents: string;
-  }[];
+  options: SurveyOption[];
   onSelect: (id: number) => void;
 }
 
@@ -24,7 +22,7 @@ const FlipCard = ({ options, onSelect }: FlipCardProps) => {
 
   useEffect(() => {
     onSelect(options[0].id);
-  }, []);
+  }, [options, onSelect]);
 
   return (
     <div className={styles.cardContainer}>

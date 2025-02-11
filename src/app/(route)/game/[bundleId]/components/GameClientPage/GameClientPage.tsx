@@ -5,24 +5,19 @@ import { useParams } from 'next/navigation';
 
 import { Slider } from '@/components/Slider';
 import { useGetTodaySurvey } from '@/query-hooks/useSurvey';
+import type { SurveyOption, SurveyType } from '@/query-hooks/useSurvey/types';
 
 import FlipCard from '../FlipCard';
 import GamePageLayout from '../GameLayout';
 
 import styles from './GameClientPage.module.scss';
 
-type SurveyType = 'BALANCE' | 'MULTIPLE_CHOICE';
-type Option = {
-  id: number;
-  optionContents: string;
-};
-
 const MultipleChoice = ({
   options,
   value,
   onSelect,
 }: {
-  options: Option[];
+  options: SurveyOption[];
   value: number;
   onSelect: (id: number) => void;
 }) => (
