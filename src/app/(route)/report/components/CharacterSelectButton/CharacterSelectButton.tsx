@@ -5,7 +5,7 @@ import styles from './CharacterSelectButton.module.scss';
 import { formatToKoreanOrder } from '@/utils';
 
 type Props = {
-  selectedCharacter?: Character;
+  selectedCharacter: Character;
   onClick: () => void;
 };
 
@@ -17,7 +17,7 @@ type Character = {
 const CharacterSelectButton = ({ onClick, selectedCharacter }: Props) => {
   return (
     <TextButton className={styles.characterButton} onClick={onClick}>
-      {selectedCharacter?.ordinalNumber
+      {selectedCharacter.ordinalNumber
         ? `${formatToKoreanOrder(selectedCharacter.ordinalNumber)} 캐릭터`
         : '캐릭터 선택'}{' '}
       <ArrowDown2Icon className={styles.characterButtonIcon} width={24} height={24} />

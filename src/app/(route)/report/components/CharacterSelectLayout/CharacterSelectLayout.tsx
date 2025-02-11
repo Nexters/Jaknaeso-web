@@ -8,8 +8,8 @@ import styles from './CharacterSelectLayout.module.scss';
 
 type Props = {
   open: boolean;
-  selectedCharacter?: Character;
-  characters?: Character[];
+  selectedCharacter: Character;
+  characters: Character[];
   onButtonClick: () => void;
   onCloseSheet: () => void;
   onSelect: (character: Character) => void;
@@ -24,7 +24,7 @@ export default function CharacterSelectLayout({
   children,
   open,
   selectedCharacter,
-  characters = [],
+  characters,
   onButtonClick,
   onCloseSheet,
   onSelect,
