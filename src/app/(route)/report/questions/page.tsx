@@ -67,7 +67,7 @@ export default function ReportQuestions() {
         open={open}
         characters={characters}
         selectedCharacter={selectedCharacter}
-        onCloseSheet={() => setOpen(true)}
+        onCloseSheet={() => setOpen(false)}
         onSelect={handleCharacter}
       />
     </div>
