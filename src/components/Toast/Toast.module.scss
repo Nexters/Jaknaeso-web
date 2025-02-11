@@ -11,8 +11,10 @@
   position: absolute;
   bottom: 4.25rem;
   width: calc(100% - 2.5rem);
-  padding-top: 25.5px;
-  padding-bottom: 25.5px;
+  padding-left: 1.7188rem;
+  padding-right: 1.7188rem;
+  text-align: center;
+  height: 4.5rem;
   left: 50%;
   transform: translateX(-50%);
   @include flex-center;

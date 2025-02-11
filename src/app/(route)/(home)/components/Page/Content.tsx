@@ -40,8 +40,7 @@ export default function HomeContent() {
 
     return 'default';
   };
-  // disabled 일 경우 토스트 띄우기
-  // completed 일 경우 나의 답변 모아보기 focus 되어서 보여지게게
+
   const onClickBtn = (day: number): void => {
     if (getLockState(day) === 'default') {
       routes.push(`${ROUTES.game}/${data?.bundleId}`);
@@ -50,6 +49,7 @@ export default function HomeContent() {
       showToast('하루에 한 회차씩 답변할 수 있어요');
     }
     if (getLockState(day) === 'completed') {
+      routes.push(`${ROUTES.reportQuestions}?focus=${day}`);
     }
   };
 

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
 
 import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
@@ -35,6 +36,16 @@ export default function ReportQuestions() {
   const [characters, setCharacters] = useState<Character[]>(MOCK_CHARACTERS);
   const [selectedCharacter, setSelectedCharacter] = useState<Character>(MOCK_CHARACTER1);
   const [questions, setQuestions] = useState(mockQuestions);
+  const searchParams = useSearchParams();
+
+  const focusIndex = searchParams.get('focus') ? Number(searchParams.get('focus')) - 1 : null;
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (focusIndex !== null && cardRefs.current[focusIndex]) {
+      cardRefs.current[focusIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [focusIndex]);
 
   const handleCharacter = (character: Character) => {
     setSelectedCharacter(character);
@@ -53,12 +64,16 @@ export default function ReportQuestions() {
       <div className={styles.contentContainer}>
         {questions.map((question, index) => (
           <Card
+            ref={(el) => {
+              cardRefs.current[index] = el;
+            }}
             key={index}
             count={index + 1}
             date={formatDate(question.date)}
             question={question.question}
             answer={question.answer}
             retrospective={question.retrospective}
+            isOpen={focusIndex === index}
             className={styles.card}
           />
         ))}
