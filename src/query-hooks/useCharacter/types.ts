@@ -1,12 +1,14 @@
-export type CharacterSearchParam = {
-  memberId: number;
-};
-
-export type CharactersResponse = {
-  characters: CharacterResponse[];
+export type CharacterParams = {
+  get: {
+    memberId: number;
+  };
 };
 
 export type CharacterResponse = {
+  characters: CharacterItem[];
+};
+
+export type CharacterItem = {
   ordinalNumber: number;
   bundleId: number;
 };

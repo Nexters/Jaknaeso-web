@@ -8,11 +8,7 @@ import styles from './page.module.scss';
 import CharacterSelectLayout from '../components/CharacterSelectLayout';
 import { useGetCharacters } from '@/query-hooks/useCharacter';
 import { useMemberStore } from '@/stores';
-
-type Character = {
-  bundleId: number;
-  ordinalNumber: number;
-};
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
 type Question = {
   date: string;
@@ -26,11 +22,11 @@ const mockQuestions: Question[] = [];
 export default function ReportQuestions() {
   const [open, setOpen] = useState(false);
   const [questions, setQuestions] = useState(mockQuestions);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character>({ ordinalNumber: 0, bundleId: 0 });
+  const [selectedCharacter, setSelectedCharacter] = useState<CharacterItem>({ ordinalNumber: 0, bundleId: 0 });
 
   const { data: characterData = { characters: [] } } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
 
-  const handleCharacter = (character: Character) => {
+  const handleCharacter = (character: CharacterItem) => {
     setSelectedCharacter(character);
     setOpen(false);
   };

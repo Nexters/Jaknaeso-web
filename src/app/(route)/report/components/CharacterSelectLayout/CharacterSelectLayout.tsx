@@ -5,19 +5,15 @@ import CharacterSelectBottomSheet from '../CharacterSelectBottomSheet';
 import CharacterTabNav from '../CharacterTabNav';
 
 import styles from './CharacterSelectLayout.module.scss';
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
 type Props = {
   open: boolean;
-  selectedCharacter: Character;
-  characters: Character[];
+  selectedCharacter: CharacterItem;
+  characters: CharacterItem[];
   onButtonClick: () => void;
   onCloseSheet: () => void;
-  onSelect: (character: Character) => void;
-};
-
-type Character = {
-  bundleId: number;
-  ordinalNumber: number;
+  onSelect: (character: CharacterItem) => void;
 };
 
 export default function CharacterSelectLayout({

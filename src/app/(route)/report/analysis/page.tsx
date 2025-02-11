@@ -4,18 +4,14 @@ import { useEffect, useState } from 'react';
 import CharacterSelectLayout from '../components/CharacterSelectLayout';
 import { useGetCharacters } from '@/query-hooks/useCharacter';
 import { useMemberStore } from '@/stores';
-
-type Character = {
-  bundleId: number;
-  ordinalNumber: number;
-};
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
 export default function ReportAnalysis() {
   const { data: characterData = { characters: [] } } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
   const [open, setOpen] = useState(false);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character>({ ordinalNumber: 0, bundleId: 0 });
+  const [selectedCharacter, setSelectedCharacter] = useState<CharacterItem>({ ordinalNumber: 0, bundleId: 0 });
 
-  const handleCharacter = (character: Character) => {
+  const handleCharacter = (character: CharacterItem) => {
     setSelectedCharacter(character);
     setOpen(false);
   };

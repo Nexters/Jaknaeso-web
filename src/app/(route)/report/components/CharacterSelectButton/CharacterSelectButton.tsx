@@ -3,15 +3,11 @@ import { TextButton } from '@/components/TextButton';
 
 import styles from './CharacterSelectButton.module.scss';
 import { formatToKoreanOrder } from '@/utils';
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
 type Props = {
-  selectedCharacter: Character;
+  selectedCharacter: CharacterItem;
   onClick: () => void;
-};
-
-type Character = {
-  bundleId: number;
-  ordinalNumber: number;
 };
 
 const CharacterSelectButton = ({ onClick, selectedCharacter }: Props) => {

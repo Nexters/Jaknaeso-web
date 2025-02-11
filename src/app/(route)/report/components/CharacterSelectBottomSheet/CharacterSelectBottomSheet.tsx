@@ -3,18 +3,14 @@ import { CheckIcon } from '@/assets/icons';
 
 import styles from './CharacterSelectBottomSheet.module.scss';
 import { formatToKoreanOrder } from '@/utils';
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
 type Props = {
   open: boolean;
-  characters: Character[];
-  selectedCharacter: Character;
+  characters: CharacterItem[];
+  selectedCharacter: CharacterItem;
   onCloseSheet: () => void;
-  onSelect: (character: Character) => void;
-};
-
-type Character = {
-  bundleId: number;
-  ordinalNumber: number;
+  onSelect: (character: CharacterItem) => void;
 };
 
 const CharacterSelectBottomSheet = ({ open, characters = [], selectedCharacter, onCloseSheet, onSelect }: Props) => {
