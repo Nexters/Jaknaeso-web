@@ -5,15 +5,15 @@ import surveyKeys from '@/query-hooks/useSurvey/keys';
 import GameClientPage from './components/GameClientPage';
 
 interface GamePageProps {
-  params: {
+  params: Promise<{
     bundleId: string;
-  };
+  }>;
 }
 
 export default async function Game({ params }: GamePageProps) {
   const { bundleId } = await params;
   return (
-    <PrefetchHydration queryKey={surveyKeys.list([Number(bundleId)])} queryFn={surveyServerApis.getTodaySurvey}>
+    <PrefetchHydration queryKey={surveyKeys.list([bundleId])} queryFn={surveyServerApis.getTodaySurvey}>
       <GameClientPage />
     </PrefetchHydration>
   );
