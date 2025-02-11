@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import CharacterSelectButton from '@/app/(route)/report/components/CharacterSelectButton';
-import CharacterTabNav from '@/app/(route)/report/components/CharacterTabNav';
-import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
+import CharacterSelectLayout from '../components/CharacterSelectLayout';
 
 type Character = {
   id: number;
@@ -31,16 +29,13 @@ export default function ReportAnalysis() {
   };
 
   return (
-    <div>
-      <CharacterSelectButton selectedCharacterName={selectedCharacter.name} onClick={() => setOpen(true)} />
-      <CharacterTabNav />
-      <CharacterSelectBottomSheet
-        open={open}
-        characters={characters}
-        selectedCharacter={selectedCharacter}
-        onCloseSheet={() => setOpen(false)}
-        onSelect={handleCharacter}
-      />
-    </div>
+    <CharacterSelectLayout
+      open={open}
+      selectedCharacter={selectedCharacter}
+      characters={characters}
+      onButtonClick={() => setOpen(true)}
+      onCloseSheet={() => setOpen(false)}
+      onSelect={handleCharacter}
+    ></CharacterSelectLayout>
   );
 }

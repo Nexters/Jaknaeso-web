@@ -3,12 +3,9 @@
 import { useState } from 'react';
 import dayjs from 'dayjs';
 
-import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
-import CharacterSelectButton from '@/app/(route)/report/components/CharacterSelectButton';
-import CharacterTabNav from '@/app/(route)/report/components/CharacterTabNav';
 import { Card } from '@/components/Card';
-
 import styles from './page.module.scss';
+import CharacterSelectLayout from '../components/CharacterSelectLayout';
 
 type Character = {
   id: number;
@@ -47,9 +44,14 @@ export default function ReportQuestions() {
   };
 
   return (
-    <div>
-      <CharacterSelectButton selectedCharacterName={selectedCharacter.name} onClick={() => setOpen(true)} />
-      <CharacterTabNav />
+    <CharacterSelectLayout
+      open={open}
+      selectedCharacter={selectedCharacter}
+      characters={characters}
+      onButtonClick={() => setOpen(true)}
+      onCloseSheet={() => setOpen(false)}
+      onSelect={handleCharacter}
+    >
       <div className={styles.contentContainer}>
         {questions.map((question, index) => (
           <Card
@@ -63,13 +65,6 @@ export default function ReportQuestions() {
           />
         ))}
       </div>
-      <CharacterSelectBottomSheet
-        open={open}
-        characters={characters}
-        selectedCharacter={selectedCharacter}
-        onCloseSheet={() => setOpen(false)}
-        onSelect={handleCharacter}
-      />
-    </div>
+    </CharacterSelectLayout>
   );
 }

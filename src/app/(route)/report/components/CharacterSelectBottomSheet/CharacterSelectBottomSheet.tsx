@@ -1,6 +1,7 @@
 import { BottomSheet } from '@/components/BottomSheet';
-import styles from '@/app/(route)/report/components/CharacterSelectBottomSheet.module.scss';
 import { CheckIcon } from '@/assets/icons';
+
+import styles from './CharacterSelectBottomSheet.module.scss';
 
 type Props = {
   open: boolean;

@@ -1,6 +1,7 @@
-import styles from '@/app/(route)/report/components/CharacterSelectButton.module.scss';
 import { ArrowDown2Icon } from '@/assets/icons';
 import { TextButton } from '@/components/TextButton';
+
+import styles from './CharacterSelectButton.module.scss';
 
 type Props = {
   selectedCharacterName: string;
