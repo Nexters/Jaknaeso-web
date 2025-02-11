@@ -1,6 +1,8 @@
 import { useRouter } from 'next/navigation';
 import { useMutation, type UseMutationOptions, useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
+import { ROUTES } from '@/constants';
+
 import surveyApis from './api.client';
 import surveyKeys from './keys';
 import type { HistoryResponse, SurveySubmissionArgs, TodaySurveyResponse } from './types';
@@ -25,7 +27,7 @@ const useSubmitSurvey = (options?: UseMutationOptions<null, Error, SurveySubmiss
   return useMutation<null, Error, SurveySubmissionArgs>({
     mutationFn: ({ bundleId, survey }) => surveyApis.submitSurvey(bundleId, survey),
     onSuccess: () => {
-      router.push('/game/complete');
+      router.push(ROUTES.gameComplete);
     },
     onError: () => {
       // 토스트 컴포넌트로 교체 예정
