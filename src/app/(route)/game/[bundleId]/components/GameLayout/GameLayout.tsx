@@ -17,9 +17,10 @@ interface GamePageLayoutProps {
   isOpen: boolean;
   closeSheet: () => void;
   openSheet: () => void;
-  className?: string;
   surveyType: SurveyType;
+  surveyId: number;
   answer: number;
+  className?: string;
 }
 
 export default function GamePageLayout({
@@ -28,9 +29,10 @@ export default function GamePageLayout({
   isOpen,
   openSheet,
   closeSheet,
-  className,
   surveyType,
+  surveyId,
   answer,
+  className,
 }: PropsWithChildren<GamePageLayoutProps>) {
   const router = useRouter();
   const goHomePage = () => router.push(ROUTES.home);
@@ -48,7 +50,7 @@ export default function GamePageLayout({
       <div className={styles.content}>{children}</div>
       <div className={styles.footer}>
         <Button onClick={openSheet}>결정하기</Button>
-        <GameBottomSheet isOpen={isOpen} closeSheet={closeSheet} optionId={answer} />
+        <GameBottomSheet isOpen={isOpen} closeSheet={closeSheet} surveyId={surveyId} optionId={answer} />
       </div>
     </div>
   );
