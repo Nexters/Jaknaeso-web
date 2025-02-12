@@ -45,7 +45,6 @@ export default function Game() {
       openSheet={() => setOpen(true)}
       closeSheet={() => setOpen(false)}
       className={surveyType === 'BALANCE' ? styles.container : ''}
-      surveyType={surveyType}
       surveyId={data.id}
       answer={answer}
     >
