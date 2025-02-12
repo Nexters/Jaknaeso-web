@@ -1,35 +1,18 @@
-'use client';
+import characterKeys from '@/query-hooks/useCharacter/keys';
+import characterServerApis from '@/query-hooks/useCharacter/api.server';
 
-import { useEffect, useState } from 'react';
-import CharacterSelectLayout from '../components/CharacterSelectLayout';
-import { useGetCharacters } from '@/query-hooks/useCharacter';
-import { useMemberStore } from '@/stores';
-import type { CharacterItem } from '@/query-hooks/useCharacter/types';
+import { PrefetchHydration } from '@/components/ReactQuery';
+import ReportAnalysisPage from './components/Page';
 
-export default function ReportAnalysis() {
-  const { data: characterData = { characters: [] } } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
-  const [open, setOpen] = useState(false);
-  const [selectedCharacter, setSelectedCharacter] = useState<CharacterItem>({ ordinalNumber: 0, bundleId: 0 });
-
-  const handleCharacter = (character: CharacterItem) => {
-    setSelectedCharacter(character);
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    if (characterData && characterData.characters.length > 0) {
-      setSelectedCharacter(characterData.characters[0]);
-    }
-  }, [characterData]);
-
+export default function ReportAnalysis({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const memberId = Number(searchParams.memberId ?? 0);
   return (
-    <CharacterSelectLayout
-      open={open}
-      selectedCharacter={selectedCharacter}
-      characters={characterData.characters}
-      onButtonClick={() => setOpen(true)}
-      onCloseSheet={() => setOpen(false)}
-      onSelect={handleCharacter}
-    ></CharacterSelectLayout>
+    <PrefetchHydration queryKey={characterKeys.lists()} queryFn={() => characterServerApis.getCharacters({ memberId })}>
+      <ReportAnalysisPage />
+    </PrefetchHydration>
   );
 }
