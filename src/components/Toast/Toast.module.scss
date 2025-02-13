@@ -24,7 +24,7 @@
   }
 
   &[data-state='closed'] {
-    animation: slideOut 300ms ease-in;
+    animation: slideOut 600ms ease-in;
   }
 
   &[data-swipe='move'] {
@@ -33,11 +33,11 @@
 
   &[data-swipe='cancel'] {
     transform: translateY(0);
-    transition: transform 200ms ease-out;
+    transition: transform 300ms ease-out;
   }
 
   &[data-swipe='end'] {
-    animation: swipeOut 100ms ease-out;
+    animation: swipeOut 300ms ease-out;
   }
 }
 
@@ -55,7 +55,7 @@
     transform: translateX(-50%) translateY(0);
   }
   to {
-    transform: translateX(-50%) translateY(5vh);
+    transform: translateX(-50%) translateY(9.5vh);
   }
 }
 

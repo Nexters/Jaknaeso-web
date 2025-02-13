@@ -16,9 +16,6 @@ import styles from './page.module.scss';
 
 export default function ReportQuestions() {
   const [open, setOpen] = useState(false);
-  // const [characters, setCharacters] = useState<Character[]>(MOCK_CHARACTERS);
-  // const [selectedCharacter, setSelectedCharacter] = useState<Character>(MOCK_CHARACTER1);
-  // const [questions, setQuestions] = useState(mockQuestions);
   const searchParams = useSearchParams();
 
   const focusIndex = searchParams.get('focus') ? Number(searchParams.get('focus')) - 1 : null;
