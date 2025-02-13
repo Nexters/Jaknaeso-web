@@ -1,6 +1,6 @@
 import Lottie, { type LottieProps } from 'react-lottie-player';
 
-import animations, { type AnimationKeys } from './Lottiekeys';
+import animations, { type AnimationKeys } from '@/assets/lottie';
 
 type LottieAnimationProps = LottieProps & {
   type: AnimationKeys;
