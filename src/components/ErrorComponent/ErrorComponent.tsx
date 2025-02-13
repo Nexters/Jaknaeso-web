@@ -1,28 +1,38 @@
+'use client';
+import { Fragment } from 'react';
+
 import { Button } from '../Button';
 import { LottieAnimation } from '../LottieAnimation';
 
 import styles from './ErrorComponent.module.scss';
 
 interface ErrorComponentProps {
-  reset: VoidFunction;
+  title: string;
+  subTitle: string;
+  reset?: VoidFunction;
   redirect: VoidFunction;
 }
 
-export default function ErrorComponent({ reset, redirect }: ErrorComponentProps) {
+export default function ErrorComponent({ title, subTitle, reset, redirect }: ErrorComponentProps) {
   return (
     <div className={styles.container}>
       <LottieAnimation type="warning" />
       <div className={styles.content}>
-        <h3 className="title2">오류가 발생했어요!</h3>
-        <p className="subtitle3">
-          일시적인 오류가 발생했어요. <br />
-          화면을 새로고침 해주세요
-        </p>
+        <h3 className="title2">{title}</h3>
+        <div>
+          {subTitle.split('\\n').map((line, index) => (
+            <Fragment key={index}>
+              <p className={styles.subtitle3}>{line}</p>
+            </Fragment>
+          ))}
+        </div>
       </div>
       <div className={styles.buttons}>
-        <Button size="sm" className={styles.reset} onClick={reset}>
-          화면 새로고침
-        </Button>
+        {reset && (
+          <Button size="sm" className={styles.reset} onClick={reset}>
+            화면 새로고침
+          </Button>
+        )}
         <Button size="sm" className={styles.redirect} onClick={redirect}>
           홈으로
         </Button>

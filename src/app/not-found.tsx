@@ -6,21 +6,17 @@ import { ErrorComponent } from '@/components/ErrorComponent';
 
 import './globals.scss';
 
-interface ErrorProps {
-  reset: () => void;
-}
-
-export default function Error({ reset }: ErrorProps) {
+export default function NotFound() {
   const router = useRouter();
   const goHome = () => {
     router.push('/');
   };
+
   return (
     <div className="errorContainer">
       <ErrorComponent
-        title="오류가 발생했어요!"
-        subTitle="일시적인 오류가 발생했어요 \n화면을 새로고침 해주세요."
-        reset={reset}
+        title="찾을 수 없는 페이지입니다"
+        subTitle="홈으로 돌아가거나 다른 메뉴를 이용해보세요."
         redirect={goHome}
       />
     </div>
