@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import UserSettings from '@/app/(route)/mypage/components/UserSettings';
 import { useMemberStore } from '@/stores';
 
 import ProfileCard from './components/ProfileCard';
@@ -12,6 +13,7 @@ export default function MyPage() {
   return (
     <div>
       <ProfileCard member={member} />
+      <UserSettings />
       <UserActionFooter memberId={member.memberId} />
     </div>
   );

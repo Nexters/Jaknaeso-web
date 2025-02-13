@@ -1,46 +1,37 @@
 'use client';
 
-import { useState } from 'react';
-import CharacterSelectButton from '@/app/(route)/report/components/CharacterSelectButton';
-import CharacterTabNav from '@/app/(route)/report/components/CharacterTabNav';
-import CharacterSelectBottomSheet from '@/app/(route)/report/components/CharacterSelectBottomSheet';
+import { useEffect, useState } from 'react';
 
-type Character = {
-  id: number;
-  name: string;
-};
+import { useGetCharacters } from '@/query-hooks/useCharacter';
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
+import { useMemberStore } from '@/stores';
 
-const MOCK_CHARACTER1 = {
-  id: 1,
-  name: '첫번째 캐릭터',
-};
-const MOCK_CHARACTER2 = {
-  id: 2,
-  name: '두번째 캐릭터',
-};
-const MOCK_CHARACTERS = [MOCK_CHARACTER1, MOCK_CHARACTER2];
+import CharacterSelectLayout from '../components/CharacterSelectLayout';
 
 export default function ReportAnalysis() {
+  const { data: characterData = { characters: [] } } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
   const [open, setOpen] = useState(false);
-  const [characters, setCharacters] = useState<Character[]>(MOCK_CHARACTERS);
-  const [selectedCharacter, setSelectedCharacter] = useState<Character>(MOCK_CHARACTER1);
+  const [selectedCharacter, setSelectedCharacter] = useState<CharacterItem>({ ordinalNumber: 0, bundleId: 0 });
 
-  const handleCharacter = (character: Character) => {
+  const handleCharacter = (character: CharacterItem) => {
     setSelectedCharacter(character);
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (characterData && characterData.characters.length > 0) {
+      setSelectedCharacter(characterData.characters[0]);
+    }
+  }, [characterData]);
+
   return (
-    <div>
-      <CharacterSelectButton selectedCharacterName={selectedCharacter.name} onClick={() => setOpen(true)} />
-      <CharacterTabNav />
-      <CharacterSelectBottomSheet
-        open={open}
-        characters={characters}
-        selectedCharacter={selectedCharacter}
-        onCloseSheet={() => setOpen(false)}
-        onSelect={handleCharacter}
-      />
-    </div>
+    <CharacterSelectLayout
+      open={open}
+      selectedCharacter={selectedCharacter}
+      characters={characterData.characters}
+      onButtonClick={() => setOpen(true)}
+      onCloseSheet={() => setOpen(false)}
+      onSelect={handleCharacter}
+    ></CharacterSelectLayout>
   );
 }
