@@ -1,8 +1,5 @@
-import Lottie from 'react-lottie-player';
-
-import errorAnimation from '@/assets/lottie/warning.json';
-
 import { Button } from '../Button';
+import { LottieAnimation } from '../LottieAnimation';
 
 import styles from './ErrorComponent.module.scss';
 
@@ -14,7 +11,7 @@ interface ErrorComponentProps {
 export default function ErrorComponent({ reset, redirect }: ErrorComponentProps) {
   return (
     <div className={styles.container}>
-      <Lottie loop animationData={errorAnimation} play style={{ width: '100px', height: '100px' }} />
+      <LottieAnimation type="warning" />
       <div className={styles.content}>
         <h3 className="title2">오류가 발생했어요!</h3>
         <p className="subtitle3">
