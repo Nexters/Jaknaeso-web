@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { setCookie } from 'cookies-next/client';
 
 interface MemberState {
   name: string;
@@ -21,7 +22,10 @@ export const useMemberStore = create(
         email: '',
         memberId: 0,
       },
-      setMember: (member) => set({ member }),
+      setMember: (member) => {
+        set({ member });
+        setCookie('memberId', member.memberId, { maxAge: 60 * 60 * 24 * 15 });
+      },
       getMemberId: () => get().member.memberId,
     }),
     {
