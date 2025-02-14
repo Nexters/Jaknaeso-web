@@ -4,7 +4,14 @@ import { useGetCharacters } from '@/query-hooks/useCharacter';
 import { useMemberStore } from '@/stores';
 import { useState } from 'react';
 import type { CharacterItem } from '@/query-hooks/useCharacter/types';
+import { Diver } from '@/components/Diver';
 import CharacterSelectLayout from '@/app/(route)/report/components/CharacterSelectLayout';
+
+import { CharacterContent } from '../Contents/CharacterContent';
+import { ChartContent } from '../Contents/ChartContent';
+import { RetrospectiveContent } from '../Contents/RetrospectiveContent';
+
+import styles from './Page.module.scss';
 
 export default function ReportAnalysisPage() {
   const { data: characterData = { characters: [] } } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
@@ -26,6 +33,14 @@ export default function ReportAnalysisPage() {
       onButtonClick={() => setOpen(true)}
       onCloseSheet={() => setOpen(false)}
       onSelect={handleCharacter}
-    ></CharacterSelectLayout>
+    >
+      <div className={styles.container}>
+        <CharacterContent />
+        <Diver className={styles.divider} />
+        <ChartContent />
+        <Diver className={styles.divider} />
+        <RetrospectiveContent />
+      </div>
+    </CharacterSelectLayout>
   );
 }

@@ -1,3 +1,1 @@
-import ReportAnalysisPage from './Page';
-
-export default ReportAnalysisPage;
+export { default as ReportAnalysisPage } from './Page';
