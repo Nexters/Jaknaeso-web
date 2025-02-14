@@ -1,11 +1,12 @@
-import { type LottieProps } from 'react-lottie-player';
 import dynamic from 'next/dynamic';
 
 import animations, { type AnimationKeys } from '@/assets/lottie';
 
 const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 
-type LottieAnimationProps = LottieProps & {
+type LottieAnimationProps = {
+  play?: boolean;
+  loop?: boolean;
   type: AnimationKeys;
   width?: string;
   height?: string;
@@ -17,7 +18,6 @@ export default function LottieAnimation({
   loop = true,
   width = '100px',
   height = '100px',
-  ...options
 }: LottieAnimationProps) {
-  return <Lottie play={play} loop={loop} animationData={animations[type]} style={{ width, height }} {...options} />;
+  return <Lottie play={play} loop={loop} animationData={animations[type]} style={{ width, height }} />;
 }
