@@ -1,6 +1,9 @@
-import Lottie, { type LottieProps } from 'react-lottie-player';
+import { type LottieProps } from 'react-lottie-player';
+import dynamic from 'next/dynamic';
 
 import animations, { type AnimationKeys } from '@/assets/lottie';
+
+const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 
 type LottieAnimationProps = LottieProps & {
   type: AnimationKeys;
