@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { setCookie } from 'cookies-next/client';
-import { COOKIE_NAME } from '@/constants';
+import { setMemberIdToken } from '@/libs/cookie/manageCookie.client';
 
 interface MemberState {
   name: string;
@@ -25,7 +24,7 @@ export const useMemberStore = create(
       },
       setMember: (member) => {
         set({ member });
-        setCookie(COOKIE_NAME.memberId, member.memberId, { maxAge: 60 * 60 * 24 * 15 });
+        setMemberIdToken(String(member.memberId ?? 0));
       },
       getMemberId: () => get().member.memberId,
     }),

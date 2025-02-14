@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { setCookie } from 'cookies-next/client';
-import { COOKIE_NAME } from '@/constants';
+import { setBundleIdToken } from '@/libs/cookie/manageCookie.client';
 
 interface CharacterState {
   bundleId: number;
@@ -23,7 +22,7 @@ export const useCharacterStore = create(
       },
       setCharacter: (character) => {
         set({ character });
-        setCookie(COOKIE_NAME.bundleId, character.bundleId, { maxAge: 60 * 60 * 24 * 15 });
+        setBundleIdToken(String(character.bundleId ?? 0));
       },
       getBundleId: () => get().character.bundleId,
     }),
