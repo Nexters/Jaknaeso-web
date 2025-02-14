@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import dayjs from 'dayjs';
 
 import type { CharacterItem } from '@/query-hooks/useCharacter/types';
@@ -15,6 +16,16 @@ import { useCharacterStore } from '@/stores/useCharacter';
 
 export default function ReportQuestionsPage() {
   const [open, setOpen] = useState(false);
+  const searchParams = useSearchParams();
+
+  const focusIndex = searchParams.get('focus') ? Number(searchParams.get('focus')) - 1 : null;
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (focusIndex !== null && cardRefs.current[focusIndex]) {
+      cardRefs.current[focusIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [focusIndex]);
 
   const { data: characterData = { characters: [] } } = useGetCharacters({ memberId: useMemberStore().getMemberId() });
   const { character, setCharacter } = useCharacterStore();
