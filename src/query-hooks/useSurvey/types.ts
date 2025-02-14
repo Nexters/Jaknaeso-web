@@ -8,6 +8,7 @@ export type SurveyParams = {
 
 export type SurveySubmissionId = {
   submissionId: number;
+  index: number;
 };
 
 export type SurveyOption = {

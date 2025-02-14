@@ -6,13 +6,14 @@
 }
 
 .container {
-  padding-top: 3.125rem;
+  padding-top: 2.125rem;
 }
 
 .content {
   padding-left: 1.25rem;
   @include displayFlex(column, flex-start, flex-start, 0.625rem);
   h1 {
+    @include text-wrap(15rem);
   }
 }
 
@@ -20,13 +21,17 @@
   width: 100%;
   position: fixed;
   left: 50%;
-  bottom: 19.875rem;
+  bottom: 20.8125rem;
   transform: translate(-50%, -50%);
   @include flex-center;
 }
 .capsule {
   @include displayFlex(row, center, center, 0.625rem);
-
+  padding: 0rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   label:nth-child(1) {
     @include subTitle1;
     color: $neutral-600;
@@ -44,5 +49,8 @@
   .lock {
     @include flex-center;
     margin-bottom: 1.75rem;
+    &:nth-last-child(-n + 5) {
+      margin-bottom: 1.875rem;
+    }
   }
 }

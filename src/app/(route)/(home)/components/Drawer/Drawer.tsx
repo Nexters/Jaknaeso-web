@@ -34,8 +34,8 @@ export default function DrawerMain({ isOpen, setIsOpen, children }: PropsWithChi
       onDragEnd={onDragEnd}
       animate={animateState}
       variants={{
-        visible: { bottom: '4.25rem', height: 261 },
-        hidden: { bottom: '4.25rem', height: 500 },
+        visible: { bottom: '4.25rem', height: 225 },
+        hidden: { bottom: '4.25rem', height: 451 },
       }}
       dragMomentum={false}
       dragConstraints={{ top: 0, bottom: 0 }}
