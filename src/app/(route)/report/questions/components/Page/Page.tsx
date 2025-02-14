@@ -31,7 +31,7 @@ export default function ReportQuestionsPage() {
 
   const formatDate = (date: string) => {
     const format = 'M월 D일';
-    return dayjs(date).format(format);
+    return dayjs(date, 'YYYY.MM.DD').format(format);
   };
 
   return (
