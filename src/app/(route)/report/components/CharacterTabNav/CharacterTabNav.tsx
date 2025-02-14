@@ -16,7 +16,7 @@ const TABS = [
 const CharacterTabNav = () => {
   const router = useRouter();
   const handleRouter = (href: string) => {
-    router.push(`${href}`);
+    router.push(href);
   };
   return <TabNav tabs={TABS} onClick={handleRouter} />;
 };
