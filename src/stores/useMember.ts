@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+import { setMemberIdToken } from '@/libs/cookie/manageCookie.client';
+
 interface MemberState {
   name: string;
   email: string;
@@ -21,7 +23,10 @@ export const useMemberStore = create(
         email: '',
         memberId: 0,
       },
-      setMember: (member) => set({ member }),
+      setMember: (member) => {
+        set({ member });
+        setMemberIdToken(String(member.memberId ?? 0));
+      },
       getMemberId: () => get().member.memberId,
     }),
     {
