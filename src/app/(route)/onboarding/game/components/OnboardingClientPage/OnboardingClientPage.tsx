@@ -9,6 +9,20 @@ import type { AnswerType, SurveyOption } from '@/query-hooks/useSurvey/types';
 
 import styles from './OnboardingClientPage.module.scss';
 
+const initialData = [
+  {
+    id: 0,
+    contents: '',
+    options: [
+      {
+        id: 1,
+        optionContents: '매우 동의해요',
+      },
+    ],
+    surveyType: 'ONBOARDING',
+  },
+];
+
 const MultipleChoice = ({
   options,
   value,
@@ -25,7 +39,7 @@ const MultipleChoice = ({
 
 export default function OnboardingClientPage() {
   const { data } = useGetOnboarding();
-  const surveyResponses = data?.surveyResponses || [];
+  const surveyResponses = data?.surveyResponses ?? initialData;
 
   const [currentSurveyIndex, setCurrentSurveyIndex] = useState(0);
   const [answer, setAnswer] = useState(surveyResponses[0].options[0].id);
