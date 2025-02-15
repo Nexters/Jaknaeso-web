@@ -7,10 +7,11 @@ export const ROUTES = {
   reportAnalysis: '/report/analysis',
   reportQuestions: '/report/questions',
   mypage: '/mypage',
+  onboarding: '/onboarding',
+  onboardingGame: '/onboarding/game',
+  onboardingGameComplete: '/onboarding/game/complete',
   game: '/game',
   gameComplete: '/game/complete',
-  gameOnboarding: '/game/onboarding',
-  gameOnboardingComplete: '/game/onboarding/complete',
   term: '/term',
 } as const;
 

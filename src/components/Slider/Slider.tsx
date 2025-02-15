@@ -51,8 +51,8 @@ const Slider = ({ options, value, setValue }: SliderProps) => {
       >
         <RadxSlider.Track className={styles.track} />
         <RadxSlider.Thumb className={styles.thumb}>
-          <ArrowUp2Icon />
-          <ArrowDown2Icon />
+          <ArrowUp2Icon width="1rem" height="1rem" />
+          <ArrowDown2Icon width="1rem" height="1rem" />
         </RadxSlider.Thumb>
       </RadxSlider.Root>
     </div>
