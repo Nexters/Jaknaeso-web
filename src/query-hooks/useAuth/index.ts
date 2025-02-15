@@ -27,7 +27,7 @@ export const useAuthMutation = () => {
       if (res.isCompletedOnboarding) {
         router.push(ROUTES.home);
       } else {
-        router.push(ROUTES.onboarding);
+        router.push(ROUTES.gameOnboarding);
       }
     },
   });
@@ -47,7 +47,7 @@ export const useAuthMutation = () => {
       if (res.isCompletedOnboarding) {
         router.push(ROUTES.home);
       } else {
-        router.push(ROUTES.onboarding);
+        router.push(ROUTES.gameOnboarding);
       }
     },
   });

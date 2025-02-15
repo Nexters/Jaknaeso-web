@@ -10,11 +10,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', request.nextUrl));
   }
 
-  if (accessToken && !isCompletedOnboarding && currentPath !== '/onboarding') {
-    return NextResponse.redirect(new URL('/onboarding', request.nextUrl));
+  if (accessToken && !isCompletedOnboarding && currentPath !== '/game/onboarding') {
+    return NextResponse.redirect(new URL('/game/onboarding', request.nextUrl));
   }
 
-  if (accessToken && isCompletedOnboarding && currentPath === '/onboarding') {
+  if (accessToken && isCompletedOnboarding && currentPath === '/game/onboarding') {
     return NextResponse.redirect(new URL('/', request.nextUrl));
   }
 
@@ -24,7 +24,6 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/',
-    '/onboarding',
     '/mypage',
     '/report/analysis',
     '/report/questions',
