@@ -22,8 +22,15 @@ const Slider = ({ options, value, setValue }: SliderProps) => {
     setSliderValue(100 - index * 25);
   };
 
+  const onSliderChange = (val: number) => {
+    setSliderValue(val);
+    const index = Math.floor(val / 25);
+    setValue(options[4 - index].id);
+  };
+
   useEffect(() => {
     setValue(options[0].id);
+    setSliderValue(100);
   }, [options, setValue]);
 
   return (
@@ -44,7 +51,7 @@ const Slider = ({ options, value, setValue }: SliderProps) => {
         className={styles.root}
         orientation="vertical"
         value={[sliderValue]}
-        onValueChange={(val) => setSliderValue(val[0])}
+        onValueChange={(val) => onSliderChange(val[0])}
         min={0}
         max={100}
         step={25}
