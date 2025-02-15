@@ -29,8 +29,12 @@
     z-index: 3;
   }
   h1 {
-    @include text-wrap(15rem);
     z-index: 3;
+    color: #000;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 130%;
+    white-space: pre-line;
   }
 }
 
@@ -39,16 +43,16 @@
   @include flex-center;
   position: fixed;
   left: 50%;
-  bottom: 280px;
   transform: translateX(-50%);
   z-index: 1;
+  height: calc(100% - 29.375rem);
 }
 
 .wrapper {
   width: 100%;
   position: fixed;
   left: 50%;
-  bottom: 20.8125rem;
+  bottom: 17.5rem;
   transform: translate(-50%, -50%);
   @include flex-center;
   z-index: 3;

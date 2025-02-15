@@ -1,28 +1,36 @@
 'use client';
 
-import { FreeImg } from '@/assets/illustration';
 import { Chip } from '@/components/Chip';
+import { CHARACTERS } from '@/constants';
+import { useGetLatestCharacter } from '@/query-hooks/useCharacter';
 
 import styles from './Page.module.scss';
 
 export default function HomeTitle() {
+  const {
+    data = {
+      characterNo: '',
+      keyword: '',
+    },
+  } = useGetLatestCharacter();
+
+  const character = data?.keyword ? CHARACTERS[data?.keyword] : null;
+
   return (
     <>
-      <div className={styles.content}>
-        <Chip size="md" color="brand" className={styles.chip}>
-          첫번째 캐릭터
-        </Chip>
-        <h1 className="title01">절묘한 균형 추구자 유형</h1>
-      </div>
-      <div className={styles.character}>
-        <FreeImg width={340} height={340} />
-        {/* <AchievementImg width={340} height={340} /> */}
-        {/* <AdventureImg width={340} height={340} /> */}
-        {/* <GeneralityImg width={340} height={340} /> */}
-        {/* <PhilanthropyImg width={340} height={340} /> */}
-        {/* <SafetyImg width={340} height={340} /> */}
-        {/* <StabilityImg width={340} height={340} /> */}
-      </div>
+      {character && (
+        <>
+          <div className={styles.content}>
+            <Chip size="md" color="brand" className={styles.chip}>
+              {`${data.characterNo} 캐릭터`}
+            </Chip>
+            <h1>{character?.content}</h1>
+          </div>
+          <div className={styles.character}>
+            <character.image width={240} height={240} />
+          </div>
+        </>
+      )}
     </>
   );
 }
