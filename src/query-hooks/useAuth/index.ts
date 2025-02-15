@@ -4,7 +4,6 @@ import { useMutation } from '@tanstack/react-query';
 import { ROUTES } from '@/constants';
 import { setIsCompletedOnboarding, setTokens } from '@/libs/cookie/manageCookie.client';
 import { useMemberStore } from '@/stores';
-import { useCharacterStore } from '@/stores/useCharacter';
 
 import memberApis from '../useMember/api.client';
 
