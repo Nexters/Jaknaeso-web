@@ -142,8 +142,8 @@ type AnswerType = {
 };
 
 export default function OnboardingClientPage() {
-  //const { data: realData } = useGetOnboarding();
-  //console.log(realData);
+  // 현재 온보딩 데이터 내려오지 않음 - MOCK_DATA 사용, 이후 변경 예정
+  //const { data } = useGetOnboarding();
   const data = MOCK_DATA;
   const [currentSurveyIndex, setCurrentSurveyIndex] = useState(0);
   const [answer, setAnswer] = useState(data[0].options[0].id);
