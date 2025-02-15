@@ -10,11 +10,11 @@ export default function HomeTitle() {
   const {
     data = {
       characterNo: '',
-      keyword: '',
+      characterType: '',
     },
   } = useGetLatestCharacter();
 
-  const character = data?.keyword ? CHARACTERS[data?.keyword] : null;
+  const character = data?.characterType ? CHARACTERS[data?.characterType] : null;
 
   return (
     <>
