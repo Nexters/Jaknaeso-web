@@ -5,16 +5,43 @@
   background-color: #f8f8fa;
 }
 
+.layer {
+  background: linear-gradient(180deg, #f8f8fa 40.61%, rgba(248, 248, 250, 0) 100%);
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: 19.5625rem;
+}
+
 .container {
   padding-top: 2.125rem;
 }
 
 .content {
   padding-left: 1.25rem;
+  z-index: 3;
   @include displayFlex(column, flex-start, flex-start, 0.625rem);
+  .chip {
+    z-index: 3;
+  }
   h1 {
     @include text-wrap(15rem);
+    z-index: 3;
   }
+}
+
+.character {
+  width: 100%;
+  @include flex-center;
+  position: fixed;
+  left: 50%;
+  bottom: 280px;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 .wrapper {
@@ -24,6 +51,7 @@
   bottom: 20.8125rem;
   transform: translate(-50%, -50%);
   @include flex-center;
+  z-index: 3;
 }
 .capsule {
   @include displayFlex(row, center, center, 0.625rem);
