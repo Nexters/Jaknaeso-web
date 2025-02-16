@@ -25,3 +25,10 @@ export type LatestCharacterResponse = {
   startDate: string;
   endDate: string;
 };
+
+export type CharacterReports = {
+  keyword: CharacterKeys;
+  percentage: number;
+};
+
+export type CharacterAnalysisResponse = { valueReports: CharacterReports[] };

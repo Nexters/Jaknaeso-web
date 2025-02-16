@@ -36,6 +36,7 @@ const getSubmissions = async (params: SurveyParams['get']) => {
     `/api/v1/surveys/members/${memberId}/submissions`,
     { params },
   );
+
   return data.data;
 };
 

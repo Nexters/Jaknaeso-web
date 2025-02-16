@@ -2,7 +2,7 @@ import { serverApi } from '@/libs/api/api.server';
 import { getMemberIdToken, setCharacterId } from '@/libs/cookie/manageCookie.server';
 import type { ResponseDTO } from '@/types';
 
-import type { CharacterResponse, LatestCharacterResponse } from './types';
+import type { CharacterAnalysisResponse, CharacterResponse, LatestCharacterResponse } from './types';
 
 const getCharacters = async () => {
   const memberId = await getMemberIdToken();
@@ -20,6 +20,18 @@ const getLatestCharacter = async () => {
   setCharacterId(String(data.data.characterId));
   return data.data;
 };
-const characterServerApis = { getCharacters, getLatestCharacter };
+
+const getCharacterAnalysis = async (characterId: string) => {
+  const memberId = await getMemberIdToken();
+  const { data } = await serverApi.get<ResponseDTO<CharacterAnalysisResponse>>(
+    `/api/v1/characters/${characterId}/report`,
+    {
+      params: { memberId },
+    },
+  );
+  return data.data;
+};
+
+const characterServerApis = { getCharacters, getLatestCharacter, getCharacterAnalysis };
 
 export default characterServerApis;
