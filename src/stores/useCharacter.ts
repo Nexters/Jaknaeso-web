@@ -5,7 +5,7 @@ import { setBundleIdToken } from '@/libs/cookie/manageCookie.client';
 
 interface CharacterState {
   bundleId: number;
-  ordinalNumber: number;
+  characterId: number;
 }
 
 interface CharacterStoreState {
@@ -19,7 +19,7 @@ export const useCharacterStore = create(
     (set, get) => ({
       character: {
         bundleId: 0,
-        ordinalNumber: 0,
+        characterId: 0,
       },
       setCharacter: (character) => {
         set({ character });
