@@ -4,7 +4,12 @@ import { Chart as ChartJS, Filler, Legend, LineElement, PointElement, RadialLine
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
-export default function RadarChart({ data }: { data: number[] }) {
+interface RadarChartProps {
+  data: number[];
+  labels: string[];
+  maxIdx: number[];
+}
+export default function RadarChart({ data, labels, maxIdx }: RadarChartProps) {
   const getGradient = (ctx: CanvasRenderingContext2D, color1: string, color2: string) => {
     const gradient = ctx.createLinearGradient(0, 0, 0, 500);
     gradient.addColorStop(0, color1);
@@ -13,7 +18,7 @@ export default function RadarChart({ data }: { data: number[] }) {
   };
 
   const mathData = {
-    labels: ['자기주도', '활력', '안전', '보수', '성취', '박애', '보편'],
+    labels,
     datasets: [
       {
         data,
@@ -52,7 +57,7 @@ export default function RadarChart({ data }: { data: number[] }) {
             family: 'Pretendard',
           },
           color: (context: any) => {
-            if ([0, 1, 2].includes(context.index)) {
+            if (maxIdx.includes(context.index)) {
               return '#000000';
             }
             return 'rgba(0, 0, 0, 0.3)';
