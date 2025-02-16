@@ -1,4 +1,4 @@
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Tabs as RadixTabs } from 'radix-ui';
 
 import styles from './Tabs.module.scss';
@@ -15,13 +15,17 @@ interface TabProps {
 }
 
 export default function Tabs({ tabs }: TabProps) {
-  const currentPath = usePathname();
+  const searchParam = useSearchParams();
+  const baseQuery = searchParam.toString().split('&')[0];
+  const activeTab = tabs.find((tab) => tab.href.includes(baseQuery))?.href || tabs[0]?.href;
+
   const router = useRouter();
   const handleRouter = (href: string) => {
     router.push(href);
   };
+
   return (
-    <RadixTabs.Root className={styles.root} value={currentPath}>
+    <RadixTabs.Root className={styles.root} value={activeTab}>
       <RadixTabs.List className={styles.list}>
         {tabs.map((tab) => (
           <RadixTabs.Trigger

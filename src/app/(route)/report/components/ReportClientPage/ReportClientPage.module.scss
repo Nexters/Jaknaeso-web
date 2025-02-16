@@ -1,3 +1,15 @@
+.header {
+  position: fixed;
+  top: 0;
+  background-color: #f7f7f7;
+  max-width: 32rem;
+  width: 100%;
+}
+
+.content {
+  padding-top: 7.25rem;
+}
+
 .characterButton {
   font-weight: 600;
   color: #000 !important;

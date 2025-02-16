@@ -11,6 +11,7 @@ import { AnalysisTab } from '../AnalysisTab';
 import { QuestionsTab } from '../QuestionsTab';
 
 import CharacterBottomSheet from './CharacterBottomSheet';
+import styles from './ReportClientPage.module.scss';
 
 const TABS = [
   {
@@ -37,13 +38,18 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
   const onSelectCharacter = (character: SelectCharacter) => {
     setSelectCharacter(character);
   };
+  // TODO: 완료 여부 서버로 받아 분기 처리 필요
 
   return (
     <div>
-      <CharacterBottomSheet selectCharacter={selectCharacter} onSelectCharacter={onSelectCharacter} />
-      <Tabs tabs={TABS} />
-      {searchParams === 'analysis' && <AnalysisTab />}
-      {searchParams === 'questions' && <QuestionsTab bundleId={selectCharacter.bundleId} />}
+      <div className={styles.header}>
+        <CharacterBottomSheet selectCharacter={selectCharacter} onSelectCharacter={onSelectCharacter} />
+        <Tabs tabs={TABS} />
+      </div>
+      <div className={styles.content}>
+        {searchParams === 'analysis' && <AnalysisTab />}
+        {searchParams === 'questions' && <QuestionsTab bundleId={selectCharacter.bundleId} />}
+      </div>
     </div>
   );
 }
