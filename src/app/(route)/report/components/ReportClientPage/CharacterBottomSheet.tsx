@@ -4,12 +4,12 @@ import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
 import { BottomSheet } from '@/components/BottomSheet';
 import { TextButton } from '@/components/TextButton';
 import { useGetCharacters } from '@/query-hooks/useCharacter';
+import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
-import type { SelectCharacter } from './ReportClientPage';
 import styles from './ReportClientPage.module.scss';
 interface CharacterProps {
-  selectCharacter: SelectCharacter;
-  onSelectCharacter: (value: SelectCharacter) => void;
+  selectCharacter: CharacterItem;
+  onSelectCharacter: (value: CharacterItem) => void;
 }
 export default function CharacterBottomSheet({ selectCharacter, onSelectCharacter }: CharacterProps) {
   const { data: characterData = { characters: [] } } = useGetCharacters();

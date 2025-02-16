@@ -18,7 +18,7 @@ export const useCharacterStore = create(
       character: {
         bundleId: 0,
         characterId: 0,
-        characterNo: '첫번째',
+        characterNo: '',
       },
       setCharacter: (character) => {
         set({ character });
