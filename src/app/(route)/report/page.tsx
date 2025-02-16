@@ -19,6 +19,10 @@ export default async function ReportPage() {
           queryFn: () => surveyServerApis.getSubmissions({ bundleId: Number(bundleId) }),
           queryKey: surveyKeys.list(['retrospective', bundleId]),
         },
+        {
+          queryFn: () => characterServerApis.getCharacterAnalysis(String(characterId)),
+          queryKey: characterKeys.detail(['analysis', characterId]),
+        },
       ]}
     >
       <ReportClientPage bundleId={Number(bundleId)!} characterId={Number(characterId)!} />

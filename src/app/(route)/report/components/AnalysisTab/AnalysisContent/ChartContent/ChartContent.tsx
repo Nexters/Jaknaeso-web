@@ -1,7 +1,11 @@
+import { useGetCharacterAnalysis } from '@/query-hooks/useCharacter';
+
 import styles from './ChartContent.module.scss';
 import RadarChart from './RadarChart';
 
-export default function ChartContent() {
+export default function ChartContent({ characterId }: { characterId: string }) {
+  const { data } = useGetCharacterAnalysis(characterId);
+  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.title}>

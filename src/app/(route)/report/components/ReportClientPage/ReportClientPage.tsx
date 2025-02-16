@@ -56,7 +56,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     setSelectCharacter(character);
   };
   // TODO: 완료 여부 서버로 받아 분기 처리 필요
-  const isComplete = false;
+  const isComplete = true;
   return (
     <div>
       <div className={styles.header}>
@@ -64,7 +64,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
         <Tabs tabs={TABS} />
       </div>
       <div className={styles.content}>
-        {searchParams === 'analysis' && isComplete && <AnalysisTab />}
+        {searchParams === 'analysis' && isComplete && <AnalysisTab characterId={String(selectCharacter.characterId)} />}
         {searchParams === 'analysis' && !isComplete && (
           <EmptyTab
             title={`${selectCharacter.characterNo} 캐릭터를\n만드는 중이에요`}
