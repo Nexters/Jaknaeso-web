@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 import { Card } from '@/components/Card';
 import { useGetSubmissions } from '@/query-hooks/useSurvey';
 
+import { EmptyTab } from '../EmptyTab';
+
 import styles from './QuestionsTab.module.scss';
 
 export default function QuestionsTab({ bundleId }: { bundleId: number }) {
@@ -26,6 +28,10 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
     const format = 'M월 D일';
     return dayjs(date, 'YYYY.MM.DD').format(format);
   };
+
+  if (submissionData.surveyRecords.length === 0) {
+    return <EmptyTab title={'아직 작성하신 회고가 없어요'} subTitle={'가치관 질문에 회고를 작성해보세요.'} />;
+  }
 
   return (
     <div className={styles.contentContainer}>
