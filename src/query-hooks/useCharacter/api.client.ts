@@ -1,9 +1,9 @@
 import { clientApi } from '@/libs/api/api.client';
 import { getMemberIdToken, setCharacterId } from '@/libs/cookie/manageCookie.client';
+import { useCharacterStore } from '@/stores/useCharacter';
 import type { ResponseDTO } from '@/types';
 
 import type { CharacterResponse, LatestCharacterResponse } from './types';
-
 const getCharacters = async () => {
   const memberId = await getMemberIdToken();
   const { data } = await clientApi.get<ResponseDTO<CharacterResponse>>(`/api/v1/characters`, {
@@ -18,6 +18,10 @@ const getLatestCharacter = async () => {
     params: { memberId },
   });
   setCharacterId(String(data.data.characterId));
+  useCharacterStore.getState().setCharacter({
+    characterId: data.data.characterId,
+    characterNo: data.data.characterNo,
+  });
   return data.data;
 };
 

@@ -1,17 +1,15 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { setBundleIdToken } from '@/libs/cookie/manageCookie.client';
-
 interface CharacterState {
-  bundleId: number;
+  characterNo: string;
   characterId: number;
 }
 
 interface CharacterStoreState {
   character: CharacterState;
   setCharacter: (character: CharacterState) => void;
-  getBundleId: () => number;
+  //getBundleId: () => number;
 }
 
 export const useCharacterStore = create(
@@ -20,12 +18,13 @@ export const useCharacterStore = create(
       character: {
         bundleId: 0,
         characterId: 0,
+        characterNo: '첫번째',
       },
       setCharacter: (character) => {
         set({ character });
-        setBundleIdToken(String(character.bundleId ?? 0));
+        //setBundleIdToken(String(character.bundleId ?? 0));
       },
-      getBundleId: () => get().character.bundleId,
+      //getBundleId: () => get().character.bundleId,
     }),
     {
       name: 'character',
