@@ -10,13 +10,12 @@ import { useGetSubmissions } from '@/query-hooks/useSurvey';
 import styles from './QuestionsTab.module.scss';
 
 export default function QuestionsTab({ bundleId }: { bundleId: number }) {
-  console.log('questions - bundleId', bundleId);
   const searchParams = useSearchParams();
   const focusIndex = searchParams.get('focus') ? Number(searchParams.get('focus')) - 1 : null;
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const { data: submissionData = { surveyRecords: [] } } = useGetSubmissions(String(bundleId));
-  console.log('응답', submissionData);
+
   useEffect(() => {
     if (focusIndex !== null && cardRefs.current[focusIndex]) {
       cardRefs.current[focusIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -32,11 +31,15 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
     <div className={styles.contentContainer}>
       {submissionData.surveyRecords.map((question, index) => (
         <Card
+          ref={(el) => {
+            cardRefs.current[index] = el;
+          }}
           key={question.submissionId}
           count={index + 1}
           date={formatDate(question.submittedAt)}
           question={question.question}
           answer={question.answer}
+          isOpen={focusIndex === index}
           retrospective={question.retrospective}
           className={styles.card}
         />
