@@ -11,15 +11,24 @@ export type CharacterResponse = {
 };
 
 export type CharacterItem = {
-  ordinalNumber: number;
+  characterNo: string;
+  characterId: number;
   bundleId: number;
 };
 
 export type LatestCharacterResponse = {
+  characterId: number;
   characterNo: string;
-  characterType: string;
+  characterType: CharacterKeys;
+  name: string;
   description: string;
   startDate: string;
   endDate: string;
-  keyword: CharacterKeys;
 };
+
+export type CharacterReports = {
+  keyword: CharacterKeys;
+  percentage: number;
+};
+
+export type CharacterAnalysisResponse = { valueReports: CharacterReports[] };
