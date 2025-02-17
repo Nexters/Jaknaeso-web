@@ -4,12 +4,7 @@
   @include flex-center-column;
   width: 100%;
 }
-.character {
-  width: 13.75rem;
-  height: 13.75rem;
-  background-color: $neutral-300;
-  border-radius: 1.5625rem;
-}
+
 .content {
   width: 100%;
   @include displayFlex(column, center, center, 0.75rem);

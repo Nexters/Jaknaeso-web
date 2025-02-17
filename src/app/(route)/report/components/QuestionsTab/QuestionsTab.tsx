@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Skeleton } from '@radix-ui/themes';
 
 import { Card } from '@/components/Card';
 import { useGetSubmissions } from '@/query-hooks/useSurvey';
@@ -32,19 +33,20 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
   return (
     <div className={styles.contentContainer}>
       {submissionData.surveyRecords.map((question, index) => (
-        <Card
-          ref={(el) => {
-            cardRefs.current[index] = el;
-          }}
-          key={question.submissionId}
-          count={index + 1}
-          date={formatDate(question.submittedAt)}
-          question={question.question}
-          answer={question.answer}
-          isOpen={focusIndex === index}
-          retrospective={question.retrospective}
-          className={styles.card}
-        />
+        <Skeleton key={question.submissionId} loading={isLoading}>
+          <Card
+            ref={(el) => {
+              cardRefs.current[index] = el;
+            }}
+            count={index + 1}
+            date={formatDate(question.submittedAt)}
+            question={question.question}
+            answer={question.answer}
+            isOpen={focusIndex === index}
+            retrospective={question.retrospective}
+            className={styles.card}
+          />
+        </Skeleton>
       ))}
     </div>
   );
