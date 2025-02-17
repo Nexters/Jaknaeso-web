@@ -7,3 +7,13 @@
 .title {
   @include displayFlex(row, flex-start, center, 0.4375rem);
 }
+
+.contentContainer {
+  @include flex-column;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+
+.card {
+  margin: 0.5rem;
+}

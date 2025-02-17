@@ -1,9 +1,18 @@
+import dayjs from 'dayjs';
+
 import { Card } from '@/components/Card';
 import { Chip } from '@/components/Chip';
+import { useGetSubmissions } from '@/query-hooks/useSurvey';
 
 import styles from './RetrospectiveContent.module.scss';
 
-export default function RetrospectiveContent() {
+export default function RetrospectiveContent({ bundleId }: { bundleId: string }) {
+  const { data: submissionData = { surveyRecords: [] }, isLoading } = useGetSubmissions(String(bundleId));
+
+  const formatDate = (date: string) => {
+    const format = 'M월 D일';
+    return dayjs(date, 'YYYY.MM.DD').format(format);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -14,15 +23,20 @@ export default function RetrospectiveContent() {
         <h2 className="title3">예요.</h2>
       </div>
 
-      <Card
-        count={3}
-        date={'2025.02.23'}
-        question={'커리어를 향상시킬 수 있는 일자리이지만 가까운 사람들과 멀어져야한다면, 이 일자리를 선택하실 건가요?'}
-        answer={'주변 사람과 물리적으로 멀어지더라도, 커리어를 선택한다.'}
-        retrospective={
-          '가까운 사람들과 물리적으로 멀어지더라도 그 관계가 사라지진 않음. 내 노력에 따라 관계는 달라질 수 있지만 커리어 기회는 원할 때 오는게 아님'
-        }
-      />
+      <div className={styles.contentContainer}>
+        {submissionData.surveyRecords.map((question, index) => (
+          <Card
+            key={question.submissionId}
+            count={index + 1}
+            date={formatDate(question.submittedAt)}
+            question={question.question}
+            answer={question.answer}
+            isOpen={true}
+            retrospective={question.retrospective}
+            className={styles.card}
+          />
+        ))}
+      </div>
     </div>
   );
 }

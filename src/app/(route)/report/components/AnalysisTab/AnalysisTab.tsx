@@ -6,7 +6,11 @@ import { InfoContent } from './AnalysisContent/InfoContent';
 import { RetrospectiveContent } from './AnalysisContent/RetrospectiveContent';
 import styles from './AnalysisTab.module.scss';
 
-export default function ReportAnalysisTab({ characterId }: { characterId: string }) {
+interface ReportAnalysisTabProps {
+  characterId: string;
+  bundleId: string;
+}
+export default function ReportAnalysisTab({ characterId, bundleId }: ReportAnalysisTabProps) {
   return (
     <div className={styles.container}>
       <CharacterContent />
@@ -15,7 +19,7 @@ export default function ReportAnalysisTab({ characterId }: { characterId: string
       <Diver className={styles.divider} />
       <ChartContent characterId={characterId} />
       <Diver className={styles.divider} />
-      <RetrospectiveContent />
+      <RetrospectiveContent bundleId={bundleId} />
     </div>
   );
 }

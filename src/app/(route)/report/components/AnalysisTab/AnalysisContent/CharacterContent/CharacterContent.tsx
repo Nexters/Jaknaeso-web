@@ -1,10 +1,11 @@
 import { Chip } from '@/components/Chip';
+import { LottieAnimation } from '@/components/LottieAnimation';
 
 import styles from './CharacterContent.module.scss';
 export default function CharacterContent() {
   return (
     <div className={styles.container}>
-      <div className={styles.character} />
+      <LottieAnimation type="adventure" width="280px" height="280px" />
       <div className={styles.content}>
         <h2 className="title03">valueType</h2>
         <Chip size="sm" color="neutral">
