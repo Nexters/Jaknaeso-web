@@ -1,18 +1,13 @@
-import dayjs from 'dayjs';
-
 import { Card } from '@/components/Card';
 import { Chip } from '@/components/Chip';
 import { useGetSubmissions } from '@/query-hooks/useSurvey';
+import { formatDate } from '@/utils';
 
 import styles from './RetrospectiveContent.module.scss';
 
 export default function RetrospectiveContent({ bundleId }: { bundleId: string }) {
   const { data: submissionData = { surveyRecords: [] }, isLoading } = useGetSubmissions(String(bundleId));
 
-  const formatDate = (date: string) => {
-    const format = 'M월 D일';
-    return dayjs(date, 'YYYY.MM.DD').format(format);
-  };
   return (
     <div className={styles.container}>
       <div className={styles.title}>

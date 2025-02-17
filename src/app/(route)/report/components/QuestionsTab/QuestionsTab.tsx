@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import dayjs from 'dayjs';
 
 import { Card } from '@/components/Card';
 import { useGetSubmissions } from '@/query-hooks/useSurvey';
+import { formatDate } from '@/utils';
 
 import { EmptyTab } from '../EmptyTab';
 
@@ -23,11 +23,6 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
       cardRefs.current[focusIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [focusIndex]);
-
-  const formatDate = (date: string) => {
-    const format = 'M월 D일';
-    return dayjs(date, 'YYYY.MM.DD').format(format);
-  };
 
   if (submissionData.surveyRecords.length === 0 && !isLoading) {
     return <EmptyTab title={'아직 작성하신 회고가 없어요'} subTitle={'가치관 질문에 회고를 작성해보세요.'} />;
