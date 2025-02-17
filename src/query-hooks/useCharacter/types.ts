@@ -14,6 +14,7 @@ export type CharacterItem = {
   characterNo: string;
   characterId: number;
   bundleId: number;
+  isCompleted: boolean;
 };
 
 export type LatestCharacterResponse = {

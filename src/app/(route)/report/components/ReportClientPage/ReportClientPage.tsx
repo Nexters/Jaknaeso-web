@@ -41,6 +41,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     characterId,
     bundleId,
     characterNo: '',
+    isCompleted: false,
   });
 
   useEffect(() => {
@@ -48,6 +49,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
       setSelectCharacter((prevCharacter) => ({
         ...prevCharacter,
         characterNo: character.characterNo,
+        isCompleted: character.isCompleted,
       }));
     }
   }, [character.characterNo]);
@@ -55,8 +57,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
   const onSelectCharacter = (character: CharacterItem) => {
     setSelectCharacter(character);
   };
-  // TODO: 완료 여부 서버로 받아 분기 처리 필요
-  const isComplete = true;
+
   return (
     <div>
       <div className={styles.header}>
@@ -64,10 +65,10 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
         <Tabs tabs={TABS} />
       </div>
       <div className={styles.content}>
-        {searchParams === 'analysis' && isComplete && (
+        {searchParams === 'analysis' && selectCharacter?.isCompleted && (
           <AnalysisTab bundleId={String(selectCharacter.bundleId)} characterId={String(selectCharacter.characterId)} />
         )}
-        {searchParams === 'analysis' && !isComplete && (
+        {searchParams === 'analysis' && !selectCharacter?.isCompleted && (
           <EmptyTab
             title={`${selectCharacter.characterNo} 캐릭터를\n만드는 중이에요`}
             subTitle={'15일 간의 가치관 질문에\n응답하면 캐릭터가 완성돼요.'}
@@ -78,3 +79,4 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     </div>
   );
 }
+// /api/v1/characters/{characterId}

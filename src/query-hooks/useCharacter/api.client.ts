@@ -21,6 +21,7 @@ const getLatestCharacter = async () => {
   useCharacterStore.getState().setCharacter({
     characterId: data.data.characterId,
     characterNo: data.data.characterNo,
+    isCompleted: false,
   });
   return data.data;
 };

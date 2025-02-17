@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 interface CharacterState {
   characterNo: string;
   characterId: number;
+  isCompleted: boolean;
 }
 
 interface CharacterStoreState {
@@ -19,6 +20,7 @@ export const useCharacterStore = create(
         bundleId: 0,
         characterId: 0,
         characterNo: '',
+        isCompleted: false,
       },
       setCharacter: (character) => {
         set({ character });
