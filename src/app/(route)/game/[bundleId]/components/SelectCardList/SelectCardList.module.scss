@@ -1,0 +1,43 @@
+.cardListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.125rem;
+  gap: 0.875rem;
+}
+
+.card {
+  width: 100%;
+  height: 8.375rem;
+  padding: 0 1.25rem;
+  border-radius: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  background-color: $white;
+  align-items: center;
+  &__checked {
+    border: 2px solid $primary-blue-500;
+  }
+
+  p {
+    @include subTitle4;
+    justify-self: flex-start;
+    text-align: left;
+  }
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $neutral-400;
+  color: $white;
+  flex-shrink: 0;
+
+  &__checked {
+    background-color: $primary-blue-500;
+  }
+}
