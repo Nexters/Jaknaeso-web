@@ -1,6 +1,14 @@
 import dayjs from 'dayjs';
 
-export const formatDate = (date: string) => {
+const formatDate = (date: string) => {
   const format = 'M월 D일';
   return dayjs(date, 'YYYY.MM.DD').format(format);
 };
+
+const formatDateRange = (start: string, end: string) => {
+  const startDate = dayjs(start);
+  const endDate = dayjs(end);
+  return `${startDate.format('YYYY.MM.DD')} - ${endDate.format('YYYY.MM.DD')}`;
+};
+
+export { formatDate, formatDateRange };
