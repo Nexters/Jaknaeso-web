@@ -33,3 +33,11 @@ export type CharacterReports = {
 };
 
 export type CharacterAnalysisResponse = { valueReports: CharacterReports[] };
+
+export type CharacterTrait = { description: string };
+export type CharacterTraits = {
+  mainTraits: CharacterTrait[];
+  strengths: CharacterTrait[];
+  weaknesses: CharacterTrait[];
+};
+export type CharacterReportInfoResponse = LatestCharacterResponse & CharacterTraits;

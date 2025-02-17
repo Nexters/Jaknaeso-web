@@ -3,7 +3,12 @@ import { getMemberIdToken, setCharacterId } from '@/libs/cookie/manageCookie.cli
 import { useCharacterStore } from '@/stores/useCharacter';
 import type { ResponseDTO } from '@/types';
 
-import type { CharacterAnalysisResponse, CharacterResponse, LatestCharacterResponse } from './types';
+import type {
+  CharacterAnalysisResponse,
+  CharacterReportInfoResponse,
+  CharacterResponse,
+  LatestCharacterResponse,
+} from './types';
 const getCharacters = async () => {
   const memberId = await getMemberIdToken();
   const { data } = await clientApi.get<ResponseDTO<CharacterResponse>>(`/api/v1/characters`, {
@@ -38,6 +43,14 @@ const getCharacterAnalysis = async (characterId: string) => {
   return data.data;
 };
 
-const characterServerApis = { getCharacters, getLatestCharacter, getCharacterAnalysis };
+const getCharacterReportInfo = async (characterId: string) => {
+  const memberId = await getMemberIdToken();
+  const { data } = await clientApi.get<ResponseDTO<CharacterReportInfoResponse>>(`/api/v1/characters/${characterId}`, {
+    params: { memberId },
+  });
+  return data.data;
+};
+
+const characterServerApis = { getCharacters, getLatestCharacter, getCharacterAnalysis, getCharacterReportInfo };
 
 export default characterServerApis;

@@ -2,7 +2,12 @@ import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
 import characterApis from './api.client';
 import characterKeys from './keys';
-import type { CharacterAnalysisResponse, CharacterResponse, LatestCharacterResponse } from './types';
+import type {
+  CharacterAnalysisResponse,
+  CharacterReportInfoResponse,
+  CharacterResponse,
+  LatestCharacterResponse,
+} from './types';
 
 const useGetCharacters = (options?: UseQueryOptions<CharacterResponse, Error>) => {
   return useQuery<CharacterResponse, Error>({
@@ -27,4 +32,16 @@ const useGetCharacterAnalysis = (characterId: string, options?: UseQueryOptions<
     ...options,
   });
 };
-export { useGetCharacterAnalysis, useGetCharacters, useGetLatestCharacter };
+
+const useGetCharacterReportInfo = (
+  characterId: string,
+  options?: UseQueryOptions<CharacterReportInfoResponse, Error>,
+) => {
+  return useQuery<CharacterReportInfoResponse, Error>({
+    queryKey: characterKeys.detail(['info', characterId]),
+    queryFn: () => characterApis.getCharacterReportInfo(characterId),
+    ...options,
+  });
+};
+
+export { useGetCharacterAnalysis, useGetCharacterReportInfo, useGetCharacters, useGetLatestCharacter };
