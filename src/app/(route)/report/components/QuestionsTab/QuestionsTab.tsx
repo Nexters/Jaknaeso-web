@@ -20,7 +20,8 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
 
   useEffect(() => {
     if (focusIndex !== null && cardRefs.current[focusIndex]) {
-      cardRefs.current[focusIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const cardElement = cardRefs.current[focusIndex];
+      cardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [focusIndex]);
 
