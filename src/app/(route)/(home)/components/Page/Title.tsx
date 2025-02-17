@@ -1,6 +1,7 @@
 'use client';
 
 import { Chip } from '@/components/Chip';
+import { LottieAnimation } from '@/components/LottieAnimation';
 import { CHARACTERS } from '@/constants';
 import { useGetLatestCharacter } from '@/query-hooks/useCharacter';
 
@@ -27,7 +28,7 @@ export default function HomeTitle() {
             <h1>{character?.content}</h1>
           </div>
           <div className={styles.character}>
-            <character.image width={240} height={240} />
+            <LottieAnimation type={character?.type} width="240px" height="240px" />
           </div>
         </>
       )}

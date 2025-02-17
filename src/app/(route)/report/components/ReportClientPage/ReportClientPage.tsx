@@ -56,7 +56,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     setSelectCharacter(character);
   };
   // TODO: 완료 여부 서버로 받아 분기 처리 필요
-  const isComplete = true;
+  const isComplete = false;
   return (
     <div>
       <div className={styles.header}>

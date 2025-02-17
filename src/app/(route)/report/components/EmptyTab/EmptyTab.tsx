@@ -1,4 +1,4 @@
-import { NoneImg } from '@/assets/illustration';
+import { LottieAnimation } from '@/components/LottieAnimation';
 
 import styles from './EmptyTab.module.scss';
 
@@ -10,7 +10,7 @@ export default function EmptyCard({ title, subTitle }: EmptyCardProps) {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <NoneImg width={200} height={200} />
+        <LottieAnimation type="none" width="200px" height="200px" />
         <h2>{title}</h2>
         <h5>{subTitle}</h5>
       </div>
