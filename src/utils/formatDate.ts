@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 const formatDate = (date: string) => {
-  const format = 'M월 D일';
+  const format = 'YYYY.M.DD';
   return dayjs(date, 'YYYY.MM.DD').format(format);
 };
 
