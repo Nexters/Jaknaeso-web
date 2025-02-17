@@ -23,6 +23,10 @@ export default async function ReportPage() {
           queryFn: () => characterServerApis.getCharacterAnalysis(String(characterId)),
           queryKey: characterKeys.detail(['analysis', characterId]),
         },
+        {
+          queryFn: () => characterServerApis.getCharacterReportInfo(String(characterId)),
+          queryKey: characterKeys.detail(['info', characterId]),
+        },
       ]}
     >
       <ReportClientPage bundleId={Number(bundleId)!} characterId={Number(characterId)!} />
