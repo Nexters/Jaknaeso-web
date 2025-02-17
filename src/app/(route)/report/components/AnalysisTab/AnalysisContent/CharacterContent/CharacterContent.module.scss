@@ -14,6 +14,6 @@
     color: $neutral-700;
     margin: 0 auto;
     text-align: center;
-    @include text-wrap(18.8125rem);
+    white-space: pre-line;
   }
 }
