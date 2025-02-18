@@ -13,7 +13,7 @@ export default function GameComplete() {
 
   const onClick = () => {
     setIsCompletedOnboarding(true);
-    router.push(ROUTES.home);
+    router.push(ROUTES.reportAnalysis);
   };
   return (
     <div className={styles.container}>
