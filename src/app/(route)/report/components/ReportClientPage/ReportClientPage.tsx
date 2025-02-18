@@ -55,7 +55,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
         isCompleted: currentCharacter.isCompleted,
       });
     }
-  }, [characterData.characters, isLoading]);
+  }, [isLoading]);
 
   const onSelectCharacter = (character: CharacterItem) => {
     setSelectCharacter(character);
