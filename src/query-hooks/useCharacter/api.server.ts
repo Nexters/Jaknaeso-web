@@ -14,6 +14,9 @@ const getCharacters = async () => {
   const { data } = await serverApi.get<ResponseDTO<CharacterResponse>>('/api/v1/characters', {
     params: { memberId },
   });
+  const currentCharacter = data.data.characters[data.data.characters.length - 1];
+  setCharacterId(String(currentCharacter.characterId));
+  setBundleIdToken(String(currentCharacter.bundleId));
   return data.data;
 };
 
@@ -22,8 +25,6 @@ const getLatestCharacter = async () => {
   const { data } = await serverApi.get<ResponseDTO<LatestCharacterResponse>>('/api/v1/characters/latest', {
     params: { memberId },
   });
-  setCharacterId(String(data.data.characterId));
-  setBundleIdToken(String(data.data.bundleId));
   return data.data;
 };
 

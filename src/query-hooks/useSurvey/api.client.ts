@@ -14,7 +14,6 @@ import type {
 
 const getHistory = async () => {
   const { data } = await clientApi.get<ResponseDTO<HistoryResponse>>('/api/v1/surveys/history');
-  // setBundleIdToken(String(data.data.bundleId));
   return data.data;
 };
 
