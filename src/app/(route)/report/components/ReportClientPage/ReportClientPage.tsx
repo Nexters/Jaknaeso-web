@@ -5,8 +5,8 @@ import { useSearchParams } from 'next/navigation';
 
 import { Tabs } from '@/components/Tabs';
 import { ROUTES } from '@/constants';
+import { useGetCharacters } from '@/query-hooks/useCharacter';
 import type { CharacterItem } from '@/query-hooks/useCharacter/types';
-import { useCharacterStore } from '@/stores';
 
 import { AnalysisTab } from '../AnalysisTab';
 import { EmptyTab } from '../EmptyTab';
@@ -35,24 +35,27 @@ export type SelectCharacter = Omit<CharacterItem, 'characterNo'>;
 
 export default function ReportClientPage({ bundleId, characterId }: ReportProps) {
   const searchParams = useSearchParams().get('type');
+  const { data: characterData = { characters: [] }, isLoading } = useGetCharacters();
 
-  const { character } = useCharacterStore();
   const [selectCharacter, setSelectCharacter] = useState<CharacterItem>({
     characterId,
     bundleId,
     characterNo: '',
-    isCompleted: false,
+    isCompleted: true,
   });
 
   useEffect(() => {
-    if (character.characterNo) {
-      setSelectCharacter((prevCharacter) => ({
-        ...prevCharacter,
-        characterNo: character.characterNo,
-        isCompleted: character.isCompleted,
-      }));
+    if (characterData.characters) {
+      const currentCharacter = characterData.characters[characterData.characters.length - 1];
+
+      setSelectCharacter({
+        characterId: currentCharacter.characterId,
+        bundleId: currentCharacter.bundleId,
+        characterNo: currentCharacter.characterNo,
+        isCompleted: currentCharacter.isCompleted,
+      });
     }
-  }, [character.characterNo]);
+  }, [characterData.characters, isLoading]);
 
   const onSelectCharacter = (character: CharacterItem) => {
     setSelectCharacter(character);
@@ -70,7 +73,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
         )}
         {searchParams === 'analysis' && !selectCharacter?.isCompleted && (
           <EmptyTab
-            title={`${selectCharacter.characterNo} 캐릭터를\n만드는 중이에요`}
+            title={`${selectCharacter.characterNo}를\n만드는 중이에요`}
             subTitle={'15일 간의 가치관 질문에\n응답하면 캐릭터가 완성돼요.'}
           />
         )}
@@ -79,4 +82,3 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     </div>
   );
 }
-// /api/v1/characters/{characterId}

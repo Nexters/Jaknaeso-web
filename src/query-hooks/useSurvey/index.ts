@@ -1,8 +1,18 @@
 import { useRouter } from 'next/navigation';
-import { useMutation, type UseMutationOptions, useQuery, type UseQueryOptions } from '@tanstack/react-query';
+import {
+  useMutation,
+  type UseMutationOptions,
+  useQuery,
+  useQueryClient,
+  type UseQueryOptions,
+} from '@tanstack/react-query';
+import { getCookie } from 'cookies-next';
 
 import { ROUTES } from '@/constants';
 import { useToast } from '@/hooks';
+import { CookieKey } from '@/libs/cookie/cookieKey';
+
+import characterKeys from '../useCharacter/keys';
 
 import surveyApis from './api.client';
 import surveyKeys from './keys';
@@ -40,10 +50,14 @@ const useGetOnboarding = (options?: UseQueryOptions<OnboardingResponse, Error>) 
 const useSubmitSurvey = (options?: UseMutationOptions<null, Error, SurveySubmissionParams>) => {
   const router = useRouter();
   const { showToast } = useToast();
-
+  const queryClient = useQueryClient();
+  const bundleId = getCookie(CookieKey.bundleId);
   return useMutation<null, Error, SurveySubmissionParams>({
     mutationFn: ({ surveyId, survey }) => surveyApis.submitSurvey(surveyId, survey),
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: surveyKeys.lists() });
+      queryClient.invalidateQueries({ queryKey: surveyKeys.list(['retrospective', bundleId]) });
+      queryClient.invalidateQueries({ queryKey: characterKeys.lists() });
       router.push(ROUTES.gameComplete);
     },
     onError: () => {

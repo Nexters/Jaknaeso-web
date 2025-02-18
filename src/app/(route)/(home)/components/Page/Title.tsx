@@ -17,7 +17,6 @@ export default function HomeTitle() {
     },
     isLoading,
   } = useGetLatestCharacter();
-
   const character = data?.characterType ? CHARACTERS[data?.characterType] : null;
 
   return (
@@ -25,7 +24,7 @@ export default function HomeTitle() {
       <div className={styles.content}>
         <Skeleton loading={isLoading}>
           <Chip size="md" color="brand" className={styles.chip}>
-            {`${data.characterNo} 캐릭터`}
+            {data.characterNo}
           </Chip>
         </Skeleton>
         <Skeleton loading={isLoading}>

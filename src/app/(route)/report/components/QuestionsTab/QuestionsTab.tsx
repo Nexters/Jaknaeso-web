@@ -6,7 +6,6 @@ import { Skeleton } from '@radix-ui/themes';
 
 import { Card } from '@/components/Card';
 import { useGetSubmissions } from '@/query-hooks/useSurvey';
-import { formatDate } from '@/utils';
 
 import { EmptyTab } from '../EmptyTab';
 
@@ -39,7 +38,8 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
               cardRefs.current[index] = el;
             }}
             count={index + 1}
-            date={formatDate(question.submittedAt)}
+            // date={formatDate(question.submittedAt)}
+            date={question.submittedAt}
             question={question.question}
             answer={question.answer}
             isOpen={focusIndex === index}
