@@ -1,5 +1,5 @@
 import { clientApi } from '@/libs/api/api.client';
-import { getMemberIdToken, setBundleIdToken } from '@/libs/cookie/manageCookie.client';
+import { getMemberIdToken } from '@/libs/cookie/manageCookie.client';
 import type { ResponseDTO } from '@/types';
 
 import type {
@@ -14,7 +14,7 @@ import type {
 
 const getHistory = async () => {
   const { data } = await clientApi.get<ResponseDTO<HistoryResponse>>('/api/v1/surveys/history');
-  setBundleIdToken(String(data.data.bundleId));
+  // setBundleIdToken(String(data.data.bundleId));
   return data.data;
 };
 

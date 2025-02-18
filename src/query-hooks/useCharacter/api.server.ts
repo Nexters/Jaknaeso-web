@@ -1,5 +1,5 @@
 import { serverApi } from '@/libs/api/api.server';
-import { getMemberIdToken, setCharacterId } from '@/libs/cookie/manageCookie.server';
+import { getMemberIdToken, setBundleIdToken, setCharacterId } from '@/libs/cookie/manageCookie.server';
 import type { ResponseDTO } from '@/types';
 
 import type {
@@ -23,6 +23,7 @@ const getLatestCharacter = async () => {
     params: { memberId },
   });
   setCharacterId(String(data.data.characterId));
+  setBundleIdToken(String(data.data.bundleId));
   return data.data;
 };
 

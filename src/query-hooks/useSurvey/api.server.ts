@@ -1,7 +1,7 @@
 import type { QueryFunction } from '@tanstack/react-query';
 
 import { serverApi } from '@/libs/api/api.server';
-import { getMemberIdToken, setBundleIdToken } from '@/libs/cookie/manageCookie.server';
+import { getMemberIdToken } from '@/libs/cookie/manageCookie.server';
 import type { ResponseDTO } from '@/types';
 
 import type {
@@ -15,7 +15,7 @@ import type {
 const getHistory = async () => {
   const { data } = await serverApi.get<ResponseDTO<HistoryResponse>>(`/api/v1/surveys/history`);
 
-  setBundleIdToken(String(data.data.bundleId));
+  // setBundleIdToken(String(data.data.bundleId));
   return data.data;
 };
 

@@ -19,6 +19,7 @@ export type CharacterItem = {
 
 export type LatestCharacterResponse = {
   characterId: number;
+  bundleId: number;
   characterNo: string;
   characterType: CharacterKeys;
   name: string;
