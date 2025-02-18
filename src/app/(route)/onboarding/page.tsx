@@ -1,12 +1,12 @@
 'use client';
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper/types';
 
 import { Button } from '@/components/Button';
-import { LottieAnimation } from '@/components/LottieAnimation';
 import { ROUTES } from '@/constants';
 
 import styles from './page.module.scss';
@@ -44,25 +44,50 @@ export default function OnboardingPage() {
       >
         <SwiperSlide className={styles.slideContainer}>
           {/* 전달받는 로티 이미지로 변경 예정 */}
-          <LottieAnimation type="celebrate" width="100%" height="20.3125rem" />
+
+          <Image
+            src="/onboarding/onboarding_1.png"
+            alt="onboarding1"
+            width={400}
+            height={325}
+            style={{ width: '100%', height: '20.3125rem' }}
+          />
           <h3 className="title3">매일 가치관을 묻는 질문에 답변하고</h3>
           <h3 className="title3">나의 하루를 돌아보세요</h3>
         </SwiperSlide>
         <SwiperSlide className={styles.slideContainer}>
           {/* 전달받는 로티 이미지로 변경 예정 */}
-          <LottieAnimation type="celebrate" width="100%" height="20.3125rem" />
+          <Image
+            src="/onboarding/onboarding_2.png"
+            alt="onboarding2"
+            width={400}
+            height={325}
+            style={{ width: '100%', height: '20.3125rem' }}
+          />
           <h3 className="title3">15일 동안 답변하면</h3>
           <h3 className="title3">나의 가치관 캐릭터를 알 수 있어요</h3>
         </SwiperSlide>
         <SwiperSlide className={styles.slideContainer}>
           {/* 전달받는 로티 이미지로 변경 예정 */}
-          <LottieAnimation type="celebrate" width="100%" height="20.3125rem" />
+          <Image
+            src="/onboarding/onboarding_3.png"
+            alt="onboarding3"
+            width={400}
+            height={325}
+            style={{ width: '100%', height: '20.3125rem' }}
+          />
           <h3 className="title3">답변에 대한 나의 생각을 적어</h3>
           <h3 className="title3">그날의 나를 돌아볼 수 있어요</h3>
         </SwiperSlide>
         <SwiperSlide className={styles.slideContainer}>
           {/* 전달받는 로티 이미지로 변경 예정 */}
-          <LottieAnimation type="celebrate" width="100%" height="20.3125rem" />
+          <Image
+            src="/onboarding/onboarding_4.png"
+            alt="onboarding4"
+            width={400}
+            height={325}
+            style={{ width: '100%', height: '20.3125rem' }}
+          />
           <h3 className="title3">먼저 가치관 테스트를 통해</h3>
           <h3 className="title3">나의 가치관 캐릭터를 만들어 볼까요?</h3>
         </SwiperSlide>
