@@ -1,6 +1,7 @@
 'use client';
 
 import { isIOS, isMacOs } from 'react-device-detect';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { AppleLoginButton, KakaoLoginButton } from '@/assets/buttons';
@@ -25,7 +26,16 @@ export default function LoginPage() {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        <div className={styles.logo}>
+          <Image src="/logo/Logo.svg" alt="logo" width={40} height={40} />
+          <Image src="/logo/Loopy.svg" alt="loopy" width={108} height={45} />
+        </div>
+        <div className={styles.title}>
+          나의 가치관을 찾는 <br />
+          새로운 여정
+        </div>
+      </div>
       <div className={styles.footer}>
         <KakaoLoginButton onClick={handleKakaoLogin} />
         {(isIOS || isMacOs) && <AppleLoginButton onClick={handleAppleLogin} />}
