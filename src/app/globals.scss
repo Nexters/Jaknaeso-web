@@ -77,7 +77,7 @@ a {
 
 .container {
   background-color: $neutral-200;
-  height: 100vh;
+  min-height: 100vh;
   @include displayFlex(row, center, center);
   .layout {
     background-color: $white;

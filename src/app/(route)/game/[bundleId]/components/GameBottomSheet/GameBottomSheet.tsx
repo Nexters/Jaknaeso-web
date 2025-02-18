@@ -41,10 +41,10 @@ const GameBottomSheet = ({
         />
       </BottomSheet.Content>
       <BottomSheet.Footer className={styles.bottomSheetFooter}>
-        <Button color="primary" onClick={saveRetrospective}>
+        <Button color="primary" onClick={saveRetrospective} disabled={submitSurvey.isPending}>
           작성 완료
         </Button>
-        <Button color="neutral" onClick={saveRetrospective}>
+        <Button color="neutral" onClick={saveRetrospective} disabled={submitSurvey.isPending}>
           넘어가기
         </Button>
       </BottomSheet.Footer>
