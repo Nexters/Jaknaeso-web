@@ -81,7 +81,7 @@ a {
   @include displayFlex(row, center, center);
   .layout {
     background-color: $white;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     max-width: 32rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
