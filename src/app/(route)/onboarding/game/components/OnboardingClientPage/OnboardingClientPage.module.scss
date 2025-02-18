@@ -4,6 +4,7 @@
   background-color: $white;
   text-align: center;
   touch-action: none;
+  height: 100%;
 }
 
 .sliderContainer {
@@ -20,6 +21,7 @@
   @include title3;
   white-space: pre-line;
   height: 7.5rem;
+  word-break: keep-all;
 }
 
 .content {
