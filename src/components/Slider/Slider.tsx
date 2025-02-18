@@ -13,9 +13,10 @@ interface SliderProps {
   options: Option[];
   value: number;
   setValue: (value: number) => void;
+  selected?: number;
 }
 
-const Slider = ({ options, value, setValue }: SliderProps) => {
+const Slider = ({ options, value, setValue, selected }: SliderProps) => {
   const [sliderValue, setSliderValue] = useState(100);
   const onClick = (id: number, index: number) => {
     setValue(id);
@@ -29,9 +30,15 @@ const Slider = ({ options, value, setValue }: SliderProps) => {
   };
 
   useEffect(() => {
+    if (selected) {
+      const selectedOption = options.findIndex((option) => option.id === selected);
+      setValue(selected);
+      setSliderValue((4 - selectedOption) * 25);
+      return;
+    }
     setValue(options[0].id);
     setSliderValue(100);
-  }, [options, setValue]);
+  }, [options, setValue, selected]);
 
   return (
     <div className={styles.container}>
