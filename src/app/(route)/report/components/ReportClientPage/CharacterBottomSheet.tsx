@@ -20,7 +20,7 @@ export default function CharacterBottomSheet({ selectCharacter, onSelectCharacte
   return (
     <div>
       <TextButton className={styles.characterButton} onClick={() => setOpen(true)}>
-        {buttonText && `${buttonText} 캐릭터`}
+        {buttonText && buttonText}
         <ArrowDown2Icon className={styles.characterButtonIcon} width={24} height={24} />
       </TextButton>
       <BottomSheet
@@ -40,7 +40,7 @@ export default function CharacterBottomSheet({ selectCharacter, onSelectCharacte
                 setOpen(false);
               }}
             >
-              <span>{`${character.characterNo} 캐릭터`}</span>
+              <span>{character.characterNo}</span>
               {character.characterId === selectCharacter.characterId && (
                 <CheckIcon className={styles.checkIcon} width={24} height={24} />
               )}

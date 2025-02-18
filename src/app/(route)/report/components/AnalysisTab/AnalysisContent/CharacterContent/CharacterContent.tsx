@@ -4,7 +4,6 @@ import { Chip } from '@/components/Chip';
 import { LottieAnimation } from '@/components/LottieAnimation';
 import { CHARACTERS } from '@/constants';
 import { useGetCharacterReportInfo } from '@/query-hooks/useCharacter';
-import { formatDateRange } from '@/utils';
 
 import styles from './CharacterContent.module.scss';
 
@@ -29,7 +28,8 @@ export default function CharacterContent({ characterId }: CharacterContentProp) 
         </Skeleton>
         <Skeleton loading={isLoading}>
           <Chip size="sm" color="neutral">
-            {formatDateRange(data?.startDate ?? '', data?.endDate ?? '')}
+            {/* {formatDateRange(data?.startDate ?? '', data?.endDate ?? '')} */}
+            {`${data?.startDate ?? ''} - ${data?.endDate ?? ''}`}
           </Chip>
         </Skeleton>
         <Skeleton loading={isLoading}>

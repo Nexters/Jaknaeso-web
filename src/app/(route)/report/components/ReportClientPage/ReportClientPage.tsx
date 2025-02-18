@@ -37,11 +37,12 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
   const searchParams = useSearchParams().get('type');
 
   const { character } = useCharacterStore();
+
   const [selectCharacter, setSelectCharacter] = useState<CharacterItem>({
     characterId,
     bundleId,
     characterNo: '',
-    isCompleted: false,
+    isCompleted: true,
   });
 
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
         )}
         {searchParams === 'analysis' && !selectCharacter?.isCompleted && (
           <EmptyTab
-            title={`${selectCharacter.characterNo} 캐릭터를\n만드는 중이에요`}
+            title={`${selectCharacter.characterNo}를\n만드는 중이에요`}
             subTitle={'15일 간의 가치관 질문에\n응답하면 캐릭터가 완성돼요.'}
           />
         )}
@@ -79,4 +80,3 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     </div>
   );
 }
-// /api/v1/characters/{characterId}
