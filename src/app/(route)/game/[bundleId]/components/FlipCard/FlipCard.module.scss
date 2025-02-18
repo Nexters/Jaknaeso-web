@@ -41,6 +41,12 @@
   margin-bottom: 1.75rem;
 }
 
+.content {
+  @include title3;
+  word-break: keep-all;
+  white-space: pre-line;
+}
+
 .nextButton {
   @include flex-align-center;
   position: absolute;

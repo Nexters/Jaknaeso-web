@@ -1,9 +1,10 @@
 .container {
   @include flex-column;
-  min-height: 100vh;
   padding: 0 1.125rem 1.75rem 1.125rem;
   background-color: $white;
   text-align: center;
+  touch-action: none;
+  height: 100%;
 }
 
 .topBar {
@@ -30,6 +31,7 @@
 .title {
   @include title3;
   white-space: pre-line;
+  word-break: keep-all;
 }
 
 .content {

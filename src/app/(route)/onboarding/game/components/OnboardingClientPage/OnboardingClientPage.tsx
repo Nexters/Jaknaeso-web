@@ -27,13 +27,15 @@ const MultipleChoice = ({
   options,
   value,
   onSelect,
+  selected,
 }: {
   options: SurveyOption[];
   value: number;
   onSelect: (id: number) => void;
+  selected: number;
 }) => (
   <div className={styles.sliderContainer}>
-    <Slider options={options} value={value} setValue={onSelect} />
+    <Slider options={options} value={value} setValue={onSelect} selected={selected} />
   </div>
 );
 
@@ -87,7 +89,12 @@ export default function OnboardingClientPage() {
       </div>
 
       <div className={styles.content}>
-        <MultipleChoice options={surveyResponses[currentSurveyIndex].options} value={answer} onSelect={setAnswer} />
+        <MultipleChoice
+          options={surveyResponses[currentSurveyIndex].options}
+          value={answer}
+          onSelect={setAnswer}
+          selected={answerList[currentSurveyIndex]?.optionId}
+        />
       </div>
 
       <div className={styles.footer}>
