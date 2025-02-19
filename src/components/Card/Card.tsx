@@ -1,11 +1,12 @@
 import { forwardRef } from 'react';
 import { Card as CardComponent } from '@radix-ui/themes';
 import cn from 'classnames';
-import { Accordion, Separator } from 'radix-ui';
+import { Accordion } from 'radix-ui';
 
 import { ArrowDown2Icon as ArrowDownIcon } from '@/assets/icons';
 
 import { Chip } from '../Chip';
+import { Divider } from '../Divider';
 
 import styles from './Card.module.scss';
 
@@ -29,7 +30,8 @@ const CardContents = ({ question, answer, retrospective }: CardContentsProps) =>
       <h5 className={styles.answer__content}>Q.</h5>
       <h5 className={styles.answer__content}>{question}</h5>
     </div>
-    <Separator.Root className={styles.separator} />
+    {/* <Separator.Root className={styles.separator} /> */}
+    <Divider />
     <div className={styles.answer}>
       <h5 className={styles.answer__content}>A.</h5>
       <h5 className={styles.answer__content}>{answer}</h5>

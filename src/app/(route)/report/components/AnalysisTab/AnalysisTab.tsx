@@ -1,4 +1,4 @@
-import { Diver } from '@/components/Diver';
+import { Divider } from '@/components/Divider';
 
 import { CharacterContent } from './AnalysisContent/CharacterContent';
 import { ChartContent } from './AnalysisContent/ChartContent';
@@ -13,9 +13,9 @@ export default function ReportAnalysisTab({ characterId, bundleId }: ReportAnaly
   return (
     <div className={styles.container}>
       <CharacterContent characterId={characterId} />
-      <Diver className={styles.divider} />
+      <Divider className={styles.divider} />
       <InfoContent characterId={characterId} />
-      <Diver className={styles.divider} />
+      <Divider className={styles.divider} />
       <ChartContent characterId={characterId} />
       {/* <Diver className={styles.divider} /> */}
       {/* <RetrospectiveContent bundleId={bundleId} /> */}
