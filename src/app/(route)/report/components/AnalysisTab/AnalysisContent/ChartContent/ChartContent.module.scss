@@ -10,8 +10,7 @@
   @include displayFlex(column, flex-start, flex-start, 0.25rem);
   h5 {
     color: $neutral-700;
-
-    @include text-wrap(12.75rem);
+    white-space: pre-line;
   }
 }
 .chart {
