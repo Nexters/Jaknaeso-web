@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
+import { LottieAnimation } from '@/components/LottieAnimation';
 import { Tabs } from '@/components/Tabs';
 import { ROUTES } from '@/constants';
 import { useGetCharacters } from '@/query-hooks/useCharacter';
@@ -45,6 +46,21 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
     characterNo: character.characterNo,
     isCompleted: character.isCompleted,
   });
+
+  useEffect(() => {
+    if (character) {
+      setSelectCharacter({
+        characterId: character.characterId,
+        bundleId: character.bundleId,
+        characterNo: character.characterNo,
+        isCompleted: character.isCompleted,
+      });
+    }
+  }, [character]);
+
+  if (isLoading || selectCharacter === null) {
+    return <LottieAnimation type="loading" width="200px" height="200px" />;
+  }
 
   const onSelectCharacter = (character: CharacterItem) => {
     setSelectCharacter(character);
