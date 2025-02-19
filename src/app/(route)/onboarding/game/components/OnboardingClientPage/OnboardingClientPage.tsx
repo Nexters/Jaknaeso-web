@@ -99,9 +99,14 @@ export default function OnboardingClientPage() {
 
       <div className={styles.footer}>
         {isLast ? (
-          <Button onClick={submitOnboarding} className={styles.button} disabled={submitOnboardingSurvey.isPending}>
-            완료
-          </Button>
+          <>
+            <Button color="neutral" onClick={() => onClick('prev')} className={styles['button__half']}>
+              이전으로
+            </Button>
+            <Button onClick={submitOnboarding} className={styles.button} disabled={submitOnboardingSurvey.isPending}>
+              완료
+            </Button>
+          </>
         ) : (
           <>
             {currentSurveyIndex > 0 && (
