@@ -5,7 +5,6 @@ import HomeTitle from './Title';
 export default function HomePage() {
   return (
     <div className={styles.layout}>
-      <div className={styles.layer} />
       <div className={styles.container}>
         <HomeTitle />
         <HomeContent />

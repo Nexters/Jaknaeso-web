@@ -3,18 +3,7 @@
   flex: 1;
   height: 100vh;
   background-color: #f8f8fa;
-}
-
-.layer {
-  background: linear-gradient(180deg, #f8f8fa 40.61%, rgba(248, 248, 250, 0) 100%);
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  height: 19.5625rem;
+  overflow: hidden;
 }
 
 .container {
