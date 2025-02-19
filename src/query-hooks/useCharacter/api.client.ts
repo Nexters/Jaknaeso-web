@@ -14,14 +14,18 @@ const getCharacters = async () => {
   const { data } = await clientApi.get<ResponseDTO<CharacterResponse>>(`/api/v1/characters`, {
     params: { memberId },
   });
+
   const currentCharacter = data.data.characters[data.data.characters.length - 1];
   setCharacterId(String(currentCharacter.characterId));
   setBundleIdToken(String(currentCharacter.bundleId));
+
   useCharacterStore.getState().setCharacter({
     characterId: currentCharacter.characterId,
     characterNo: currentCharacter.characterNo,
+    bundleId: currentCharacter.bundleId,
     isCompleted: currentCharacter.isCompleted,
   });
+
   return data.data;
 };
 

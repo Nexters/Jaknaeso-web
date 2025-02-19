@@ -38,7 +38,6 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
               cardRefs.current[index] = el;
             }}
             count={index + 1}
-            // date={formatDate(question.submittedAt)}
             date={question.submittedAt}
             question={question.question}
             answer={question.answer}
