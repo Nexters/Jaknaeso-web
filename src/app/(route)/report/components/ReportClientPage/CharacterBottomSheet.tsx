@@ -3,18 +3,16 @@ import { useState } from 'react';
 import { ArrowDown2Icon, CheckIcon } from '@/assets/icons';
 import { BottomSheet } from '@/components/BottomSheet';
 import { TextButton } from '@/components/TextButton';
-import { useGetCharacters } from '@/query-hooks/useCharacter';
 import type { CharacterItem } from '@/query-hooks/useCharacter/types';
 
 import styles from './ReportClientPage.module.scss';
 interface CharacterProps {
   selectCharacter: CharacterItem;
   onSelectCharacter: (value: CharacterItem) => void;
+  characters: CharacterItem[];
 }
-export default function CharacterBottomSheet({ selectCharacter, onSelectCharacter }: CharacterProps) {
-  const { data: characterData = { characters: [] } } = useGetCharacters();
-  const buttonText = characterData.characters.filter((char) => char.characterId === selectCharacter.characterId)[0]
-    ?.characterNo;
+export default function CharacterBottomSheet({ selectCharacter, onSelectCharacter, characters }: CharacterProps) {
+  const buttonText = characters.filter((char) => char.characterId === selectCharacter.characterId)[0]?.characterNo;
 
   const [open, setOpen] = useState<boolean>(false);
   return (
@@ -31,7 +29,7 @@ export default function CharacterBottomSheet({ selectCharacter, onSelectCharacte
         closeIcon
       >
         <BottomSheet.Content className={styles.characterList}>
-          {characterData.characters.map((character) => (
+          {characters.map((character) => (
             <div
               key={character.bundleId}
               className={styles.characterItem}

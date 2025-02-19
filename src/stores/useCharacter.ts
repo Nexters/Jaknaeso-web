@@ -5,6 +5,7 @@ interface CharacterState {
   characterNo: string;
   characterId: number;
   isCompleted: boolean;
+  bundleId: number;
 }
 
 interface CharacterStoreState {
@@ -16,12 +17,7 @@ interface CharacterStoreState {
 export const useCharacterStore = create(
   persist<CharacterStoreState>(
     (set, get) => ({
-      character: {
-        bundleId: 0,
-        characterId: 0,
-        characterNo: '',
-        isCompleted: false,
-      },
+      character: { characterId: 0, characterNo: '', isCompleted: false, bundleId: 0 },
       setCharacter: (character) => {
         set({ character });
         //setBundleIdToken(String(character.bundleId ?? 0));

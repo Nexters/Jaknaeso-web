@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { Tabs } from '@/components/Tabs';
 import { ROUTES } from '@/constants';
 import { useGetCharacters } from '@/query-hooks/useCharacter';
 import type { CharacterItem } from '@/query-hooks/useCharacter/types';
+import { useCharacterStore } from '@/stores';
 
 import { AnalysisTab } from '../AnalysisTab';
 import { EmptyTab } from '../EmptyTab';
@@ -35,27 +36,15 @@ export type SelectCharacter = Omit<CharacterItem, 'characterNo'>;
 
 export default function ReportClientPage({ bundleId, characterId }: ReportProps) {
   const searchParams = useSearchParams().get('type');
-  const { data: characterData = { characters: [] }, isLoading } = useGetCharacters();
+  const { data: characterData, isLoading } = useGetCharacters();
 
+  const { character } = useCharacterStore();
   const [selectCharacter, setSelectCharacter] = useState<CharacterItem>({
-    characterId,
-    bundleId,
-    characterNo: '',
-    isCompleted: true,
+    characterId: character.characterId,
+    bundleId: character.bundleId,
+    characterNo: character.characterNo,
+    isCompleted: character.isCompleted,
   });
-
-  useEffect(() => {
-    if (characterData.characters) {
-      const currentCharacter = characterData.characters[characterData.characters.length - 1];
-
-      setSelectCharacter({
-        characterId: currentCharacter.characterId,
-        bundleId: currentCharacter.bundleId,
-        characterNo: currentCharacter.characterNo,
-        isCompleted: currentCharacter.isCompleted,
-      });
-    }
-  }, [isLoading]);
 
   const onSelectCharacter = (character: CharacterItem) => {
     setSelectCharacter(character);
@@ -63,10 +52,16 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
 
   return (
     <div>
-      <div className={styles.header}>
-        <CharacterBottomSheet selectCharacter={selectCharacter} onSelectCharacter={onSelectCharacter} />
-        <Tabs tabs={TABS} />
-      </div>
+      {characterData && !isLoading && (
+        <div className={styles.header}>
+          <CharacterBottomSheet
+            characters={characterData?.characters ?? []}
+            selectCharacter={selectCharacter}
+            onSelectCharacter={onSelectCharacter}
+          />
+          <Tabs tabs={TABS} />
+        </div>
+      )}
       <div className={styles.content}>
         {searchParams === 'analysis' && selectCharacter?.isCompleted && (
           <AnalysisTab bundleId={String(selectCharacter.bundleId)} characterId={String(selectCharacter.characterId)} />
