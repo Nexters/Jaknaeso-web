@@ -24,11 +24,14 @@
 
 .header {
   @include flex-column-with-gap(0.75rem);
-  align-items: center;
-  margin-top: 3.75rem;
+  @include flex-center;
+  width: 100%;
+  margin-top: 1.4375rem;
+  height: 104px;
 }
 
 .title {
+  width: 19.375rem;
   @include title3;
   white-space: pre-line;
   word-break: keep-all;
