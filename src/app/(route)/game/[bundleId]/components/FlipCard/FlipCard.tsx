@@ -33,7 +33,7 @@ const FlipCard = ({ options, onSelect }: FlipCardProps) => {
           initial={false}
           onClick={() => onClick(options[1].id)}
         >
-          <p className={styles.cardTitle}>첫번째 질문</p>
+          <p className={styles.cardTitle}>첫번째 선택지</p>
           <h3 className={styles.content}>{options[0].optionContents}</h3>
           <div className={styles.nextButton}>
             카드 뒤집기 <SyncIcon width="1.25rem" height="1.25rem" />
@@ -46,7 +46,7 @@ const FlipCard = ({ options, onSelect }: FlipCardProps) => {
           initial={false}
           onClick={() => onClick(options[0].id)}
         >
-          <p className={styles.cardTitle}>두번째 질문</p>
+          <p className={styles.cardTitle}>두번째 선택지</p>
           <h3 className={styles.content}>{options[1].optionContents}</h3>
           <div className={styles.nextButton}>
             카드 뒤집기 <SyncIcon width="1.25rem" height="1.25rem" />

@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/Button';
 import { LottieAnimation } from '@/components/LottieAnimation';
+import { ROUTES } from '@/constants';
 
 import styles from './page.module.scss';
 
@@ -10,7 +11,7 @@ export default function GameComplete() {
   const router = useRouter();
 
   const onClick = () => {
-    router.push('/');
+    router.replace(ROUTES.home);
   };
   return (
     <div className={styles.container}>
