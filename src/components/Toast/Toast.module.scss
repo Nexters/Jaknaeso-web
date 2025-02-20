@@ -24,7 +24,7 @@
   }
 
   &[data-state='closed'] {
-    animation: slideOut 600ms ease-in;
+    animation: slideOut 900ms ease-in;
   }
 
   &[data-swipe='move'] {
@@ -53,9 +53,11 @@
 @keyframes slideOut {
   from {
     transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
   to {
     transform: translateX(-50%) translateY(9.5vh);
+    opacity: 0;
   }
 }
 
