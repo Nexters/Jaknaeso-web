@@ -15,15 +15,16 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
   const searchParams = useSearchParams();
   const focusIndex = searchParams.get('focus') ? Number(searchParams.get('focus')) - 1 : null;
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
   const { data: submissionData = { surveyRecords: [] }, isLoading } = useGetSubmissions(String(bundleId));
 
   useEffect(() => {
-    if (focusIndex !== null && cardRefs.current[focusIndex]) {
+    if (!isLoading && focusIndex !== null) {
       const cardElement = cardRefs.current[focusIndex];
-      cardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (cardElement) {
+        cardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
-  }, [focusIndex]);
+  }, [focusIndex, isLoading, submissionData.surveyRecords]);
 
   if (submissionData.surveyRecords.length === 0 && !isLoading) {
     return <EmptyTab title={'아직 작성하신 회고가 없어요'} subTitle={'가치관 질문에 회고를 작성해보세요.'} />;

@@ -23,15 +23,17 @@ export default function CharacterContent({ characterId }: CharacterContentProp) 
       )}
 
       <div className={styles.content}>
-        <Skeleton loading={isLoading}>
+        <Skeleton loading={isLoading} width="290px">
           <h2 className="title03">{data?.name ?? ''}</h2>
         </Skeleton>
-        <Skeleton loading={isLoading}>
+
+        {isLoading ? (
+          <Skeleton loading={isLoading} width="150px" height="26px" />
+        ) : (
           <Chip size="sm" color="neutral">
-            {/* {formatDateRange(data?.startDate ?? '', data?.endDate ?? '')} */}
             {`${data?.startDate ?? ''} - ${data?.endDate ?? ''}`}
           </Chip>
-        </Skeleton>
+        )}
         <Skeleton loading={isLoading}>
           <h5>{data?.description}</h5>
         </Skeleton>
