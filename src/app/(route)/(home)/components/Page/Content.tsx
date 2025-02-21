@@ -48,7 +48,7 @@ export default function HomeContent() {
     if (getLockState(day) === 'disabled' && day > (data?.nextSurveyIndex ?? 0)) {
       showToast('하루에 한 회차씩 답변할 수 있어요');
     }
-    if (getLockState(day) === 'completed') {
+    if (getLockState(day) === 'completed' || getLockState(day) === 'completedToday') {
       routes.push(`${ROUTES.reportQuestions}&focus=${day}`);
     }
   };
