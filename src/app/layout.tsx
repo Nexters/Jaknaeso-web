@@ -40,6 +40,8 @@ export default function RootLayout({
       <head>
         <KakaoScript />
         <AppleScript />
+        <meta name="color-scheme" content="light only" />
+        <meta name="supported-color-schemes" content="light" />
       </head>
       <body>
         <ReactQueryProviders>
