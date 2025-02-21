@@ -18,7 +18,7 @@ import styles from './Page.module.scss';
 
 export default function HomeContent() {
   const routes = useRouter();
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data } = useGetSurvey();
   const { showToast } = useToast();
   const daysArr = Array.from({ length: 15 }, (_, i) => i + 1);
@@ -48,7 +48,7 @@ export default function HomeContent() {
     if (getLockState(day) === 'disabled' && day > (data?.nextSurveyIndex ?? 0)) {
       showToast('하루에 한 회차씩 답변할 수 있어요');
     }
-    if (getLockState(day) === 'completed') {
+    if (getLockState(day) === 'completed' || getLockState(day) === 'completedToday') {
       routes.push(`${ROUTES.reportQuestions}&focus=${day}`);
     }
   };
@@ -77,7 +77,7 @@ export default function HomeContent() {
                     onClick={() => onClickBtn(day)}
                   />
                 ))}
-                {!isOpen &&
+                {isOpen &&
                   daysArr
                     .slice(5)
                     .map((day) => (

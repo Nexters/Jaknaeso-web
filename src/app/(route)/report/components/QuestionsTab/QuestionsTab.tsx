@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Skeleton } from '@radix-ui/themes';
 
 import { Card } from '@/components/Card';
+import { LottieAnimation } from '@/components/LottieAnimation';
 import { useGetSubmissions } from '@/query-hooks/useSurvey';
 
 import { EmptyTab } from '../EmptyTab';
@@ -28,6 +29,13 @@ export default function QuestionsTab({ bundleId }: { bundleId: number }) {
 
   if (submissionData.surveyRecords.length === 0 && !isLoading) {
     return <EmptyTab title={'아직 작성하신 회고가 없어요'} subTitle={'가치관 질문에 회고를 작성해보세요.'} />;
+  }
+  if (!submissionData.surveyRecords || isLoading) {
+    return (
+      <div className={styles.loading}>
+        <LottieAnimation type="loading" width="200px" height="200px" />
+      </div>
+    );
   }
 
   return (

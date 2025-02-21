@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-import { LottieAnimation } from '@/components/LottieAnimation';
 import { Tabs } from '@/components/Tabs';
 import { ROUTES } from '@/constants';
 import { useGetCharacters } from '@/query-hooks/useCharacter';
@@ -59,7 +58,7 @@ export default function ReportClientPage({ bundleId, characterId }: ReportProps)
   }, [character]);
 
   if (isLoading || selectCharacter === null) {
-    return <LottieAnimation type="loading" width="200px" height="200px" />;
+    return;
   }
 
   const onSelectCharacter = (character: CharacterItem) => {

@@ -1,3 +1,5 @@
+'use client';
+
 import HomeContent from './Content';
 import styles from './Page.module.scss';
 import HomeTitle from './Title';
