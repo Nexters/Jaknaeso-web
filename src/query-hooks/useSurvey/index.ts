@@ -63,7 +63,7 @@ const useSubmitSurvey = (options?: UseMutationOptions<null, Error, SurveySubmiss
       queryClient.invalidateQueries({ queryKey: characterKeys.lists() });
       router.push(ROUTES.gameComplete);
       characterApis.getCharacters().then((characterData) => {
-        const currentCharacter = characterData.characters[characterData.characters.length - 1];
+        const currentCharacter = characterData.characters[0];
         setCharacter({
           characterId: currentCharacter.characterId,
           characterNo: currentCharacter.characterNo,
@@ -90,7 +90,7 @@ const useSubmitOnboarding = (options?: UseMutationOptions<null, Error, Onboardin
       router.push(ROUTES.onboardingGameComplete);
       queryClient.invalidateQueries({ queryKey: characterKeys.lists() });
       characterApis.getCharacters().then((characterData) => {
-        const currentCharacter = characterData.characters[characterData.characters.length - 1];
+        const currentCharacter = characterData.characters[0];
         setCharacter({
           characterId: currentCharacter.characterId,
           characterNo: currentCharacter.characterNo,
