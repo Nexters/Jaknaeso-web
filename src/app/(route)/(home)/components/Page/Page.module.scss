@@ -4,6 +4,7 @@
   height: 100vh;
   background-color: #f8f8fa;
   overflow: hidden;
+  touch-action: none;
 }
 
 .container {
@@ -26,6 +27,7 @@
     white-space: pre-line;
   }
   touch-action: none;
+  overflow: hidden;
 }
 
 .character {
