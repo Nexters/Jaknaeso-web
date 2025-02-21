@@ -4,7 +4,6 @@
   height: 100vh;
   background-color: #f8f8fa;
   overflow: hidden;
-  touch-action: none;
 }
 
 .container {
@@ -26,6 +25,7 @@
     line-height: 130%;
     white-space: pre-line;
   }
+  touch-action: none;
 }
 
 .character {
@@ -36,6 +36,7 @@
   transform: translateX(-50%);
   z-index: 1;
   height: calc(100% - 29.375rem);
+  touch-action: none;
 }
 
 .wrapper {
