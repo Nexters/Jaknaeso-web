@@ -26,7 +26,7 @@ export default function GameComplete() {
         <p className={styles.subTitle}>홈 화면에서 내 캐릭터를 확인해보세요.</p>
       </div>
       <div className={styles.content}>
-        <LottieAnimation type="celebrate" width="300px" height="300px" />
+        <LottieAnimation type="celebrate" width="auto" height="auto" />
       </div>
       <div className={styles.footer}>
         <Button color="primary" onClick={onClick}>
