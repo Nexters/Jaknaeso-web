@@ -18,7 +18,7 @@ import styles from './Page.module.scss';
 
 export default function HomeContent() {
   const routes = useRouter();
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data } = useGetSurvey();
   const { showToast } = useToast();
   const daysArr = Array.from({ length: 15 }, (_, i) => i + 1);
@@ -77,7 +77,7 @@ export default function HomeContent() {
                     onClick={() => onClickBtn(day)}
                   />
                 ))}
-                {!isOpen &&
+                {isOpen &&
                   daysArr
                     .slice(5)
                     .map((day) => (

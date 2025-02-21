@@ -15,7 +15,7 @@ interface DrawerProps {
   setIsOpen: (value: boolean) => void;
 }
 export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildren<DrawerProps>) {
-  const animateState = isOpen ? 'visible' : 'hidden';
+  const animateState = isOpen ? 'hidden' : 'visible';
   const dragControls = useDragControls();
 
   const onDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
@@ -26,7 +26,7 @@ export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildre
     const isOverThreshold = isOverOffsetThreshold || isOverDeltaThreshold;
     if (!isOverThreshold) return;
     const newIsOpened = info.offset.y >= 0;
-    setIsOpen(newIsOpened);
+    setIsOpen(!newIsOpened);
   };
   return (
     <motion.div
@@ -47,7 +47,7 @@ export default function Drawer({ isOpen, setIsOpen, children }: PropsWithChildre
     >
       <div className={styles.layout}>
         <motion.div onPointerDown={(e) => dragControls.start(e)}>
-          <DrawerHandle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+          <DrawerHandle isOpen={!isOpen} onClick={() => setIsOpen(!isOpen)} />
         </motion.div>
         {children}
       </div>
